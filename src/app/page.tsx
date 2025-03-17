@@ -27,7 +27,11 @@ export default function Home() {
           <ArticleList />
         </div>
       </section>
-     
+      <section className="py-10">
+        <div className="flex flex-col items-center pt-5">
+          <Newsletter/>
+        </div>
+      </section>
     </main>
   );
 }
