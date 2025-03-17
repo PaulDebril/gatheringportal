@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
           </ul>
         </div>
         <p className="mt-4 text-xs leading-relaxed">
-          Certaines sections de Gathering Portal sont du contenu de fan non officiel autorisé par la Politique de contenu de Wizards of the Coast. Les informations sur Magic : The Gathering, y compris images et symboles de mana, sont protégées par le droit d'auteur de Wizards of the Coast, LLC. Gathering Portal n'est ni produit ni approuvé par Wizards of the Coast.
+          Certaines sections de Gathering Portal sont du contenu de fan non officiel autorisé par la Politique de contenu de Wizards of the Coast. Les informations sur Magic : The Gathering, y compris images et symboles de mana, sont protégées par le droit d&apos;auteur de Wizards of the Coast, LLC. Gathering Portal n&apos;est ni produit ni approuvé par Wizards of the Coast.
           <br />
           Les prix et offres indiqués sont des estimations quotidiennes et ne garantissent pas leur valeur finale. Consultez les magasins pour les tarifs définitifs.
         </p>

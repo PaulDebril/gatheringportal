@@ -3,7 +3,7 @@ import React, { useState, useEffect, Suspense } from 'react'
 import { motion } from 'framer-motion'
 import { useRouter, useSearchParams } from 'next/navigation'
 import CardItem from '@/app/components/Cards/CardItem'
-import { FaFilter, FaSearch } from 'react-icons/fa'
+import { FaSearch } from 'react-icons/fa'
 import { searchCards } from '@/app/services/scryfallService'
 import { ScryfallCard } from '@/app/types/scryfallTypes'
 
@@ -37,7 +37,7 @@ function CardSearchContent() {
     try {
       const result = await searchCards(q)
       setCards(result)
-    } catch (err) {
+    } catch {
       setError('Une erreur est survenue lors de la recherche.')
     } finally {
       setLoading(false)

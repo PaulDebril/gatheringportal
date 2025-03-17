@@ -14,7 +14,7 @@ const ArticleList: React.FC = () => {
       try {
         const data = await fetchArticles()
         setArticles(data)
-      } catch (err) {
+      } catch{
         setError('Impossible de charger les articles.')
       } finally {
         setLoading(false)

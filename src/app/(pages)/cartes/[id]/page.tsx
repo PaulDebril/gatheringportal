@@ -51,7 +51,7 @@ export default async function CardDetailPage({ params }: { params: { id: string 
         </div>
       </main>
     )
-  } catch (error) {
+  } catch {
     notFound()
   }
 }

@@ -2,6 +2,16 @@ import { Article } from '@/app/types/articleTypes'
 
 const API_BASE_URL = '/api/articles'
 
+// Define the type for the API response item
+interface ArticleApiResponse {
+  id: string;
+  title: string;
+  content: string;
+  image_url: string;
+  author_id?: string;
+  created_at: string;
+}
+
 /**
  * Récupère la liste des articles depuis l'API.
  */
@@ -12,8 +22,8 @@ export async function fetchArticles(): Promise<Article[]> {
       throw new Error('Erreur lors de la récupération des articles.')
     }
 
-    const data = await res.json()
-    return data.map((item: any) => ({
+    const data: ArticleApiResponse[] = await res.json()
+    return data.map((item: ArticleApiResponse) => ({
       id: item.id,
       title: item.title,
       description: item.content,
@@ -39,7 +49,7 @@ export async function fetchArticleById(id: string): Promise<Article | null> {
         throw new Error('Article introuvable.')
       }
   
-      const item = await res.json()
+      const item: ArticleApiResponse = await res.json()
       return {
         id: item.id,
         title: item.title,

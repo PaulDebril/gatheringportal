@@ -17,7 +17,7 @@ export default function Home() {
 
         <div className="absolute inset-0 flex items-center justify-center">
           <h1 className="text-7xl font-bold text-[#e2b155] beleren-font max-w-3xl text-center">
-            Explorer l'univers de Magic The Gathering
+            Explorer l&apos;univers de Magic The Gathering
           </h1>
         </div>
       </section>

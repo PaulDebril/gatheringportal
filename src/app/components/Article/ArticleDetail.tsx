@@ -25,7 +25,7 @@ const ArticleDetail: React.FC<ArticleDetailProps> = ({ id }) => {
           setError('Article introuvable.')
         }
         setArticle(data)
-      } catch (err) {
+      } catch {
         setError('Impossible de charger cet article.')
       } finally {
         setLoading(false)
