@@ -1,10 +1,11 @@
-import ArticleDetail from '@/app/components/Article/ArticleDetail'
+import ArticleDetail from '@/app/components/Article/ArticleDetail';
 
-export default function ArticleDetailPage({ params }: { params: { id: string } }) {
-  console.log(params.id)
+export default async function ArticleDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  console.log(id);
   return (
     <main className="pt-16">
-      <ArticleDetail id={params.id} />
+      <ArticleDetail id={id} />
     </main>
-  )
+  );
 }
