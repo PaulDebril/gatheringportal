@@ -5,7 +5,7 @@ import React from "react";
 
 const Header: React.FC = () => {
   return (
-    <header className="w-full py-4 flex justify-between items-center px-8">
+    <header className="w-full fixed py-4 flex justify-between items-center px-8 z-9999">
       <div className="flex items-center">
         <Link href="/">
         <Image
