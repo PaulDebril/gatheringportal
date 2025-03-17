@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import React from "react";
 
 const HomeCards = () => {
@@ -40,11 +41,7 @@ const HomeCards = () => {
             className="block bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden transition transform hover:scale-105"
           >
             <div className="relative h-60 flex items-center justify-center bg-gray-100 dark:bg-gray-700">
-              <img
-                src={card.image}
-                alt={card.title}
-                className="object-contain w-auto h-full"
-              />
+              <Image src={card.image} alt={card.title} width={300} height={300} />
             </div>
             <div className="p-4 text-center">
               <h2 className="text-xl font-bold beleren-font">{card.title}</h2>

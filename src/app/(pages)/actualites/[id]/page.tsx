@@ -1,7 +1,12 @@
 import ArticleDetail from '@/app/components/Article/ArticleDetail'
 
-export default async function ArticleDetailPage({ params }: { params: { id: string } }) {
-  console.log(params.id)
+interface ArticleDetailPageProps {
+  params: { id: string }
+}
+
+export default function ArticleDetailPage({ params }: ArticleDetailPageProps) {
+  console.log("ID reçu:", params.id)
+
   return (
     <main className="pt-16">
       <ArticleDetail id={params.id} />
