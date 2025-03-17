@@ -3,6 +3,7 @@ import React from "react";
 import ArticleList from "@/app/components/Article/ArticleList";
 import Title from "./components/Title";
 import Newsletter from "./components/Newsletter/page";
+import HomeCards from "./components/HomeCards";
 
 export default function Home() {
 
@@ -23,13 +24,19 @@ export default function Home() {
       </section>
       <section className="py-10">
         <div className="flex flex-col items-center pt-5">
-          <Title text="ACTUALITES" />
-          <ArticleList />
-        </div>
+        <Title text="EXPLORER GATHERING PORTAL" />
+          <HomeCards />
+          </div>
       </section>
       <section className="py-10">
         <div className="flex flex-col items-center pt-5">
           <Newsletter/>
+        </div>
+      </section>
+      <section className="py-10">
+        <div className="flex flex-col items-center pt-5">
+          <Title text="ACTUALITES" />
+          <ArticleList />
         </div>
       </section>
     </main>
