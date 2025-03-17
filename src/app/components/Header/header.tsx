@@ -5,7 +5,7 @@ import React from "react";
 
 const Header: React.FC = () => {
   return (
-    <header className="w-full fixed py-4 flex justify-between items-center px-8 z-9999">
+    <header className="w-full fixed py-4 flex justify-between items-center px-8 z-9999 beleren-font" >
       <div className="flex items-center">
         <Link href="/">
         <Image
@@ -16,12 +16,12 @@ const Header: React.FC = () => {
             className="mr-2 text-[#544040]"
           />
         </Link>
-        <Link href="/" className="text-2xl font-bold">
+        <Link href="/" className="text-2xl font-bold" >
           Gathering Portal
         </Link>
       </div>
       <nav>
-        <ul className="flex items-center space-x-6">
+        <ul className="flex items-center space-x-6 text-xl" >
           <li>
             <Link href="/actualites" className="hover:underline">
               Actualités
@@ -45,7 +45,7 @@ const Header: React.FC = () => {
         </ul>
       </nav>
       <div>
-        <button className="px-3 py-1 border border-[#910d0b] text-[#910d0b] rounded hover:bg-[#910d0b] hover:text-white transition-colors">
+        <button className="border rounded bg-amber-950 text-white border-amber-950 py-1 px-4">
           Se connecter
         </button>
       </div>
