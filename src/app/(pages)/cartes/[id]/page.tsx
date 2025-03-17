@@ -4,9 +4,10 @@ import Image from 'next/image'
 import { getCardById } from '@/app/services/scryfallService'
 import { ScryfallCardDetail } from '@/app/types/scryfallTypes'
 
-export default async function CardDetailPage({ params }: { params: { id: string } }) {
+export default async function CardDetailPage({ params, }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   try {
-    const card: ScryfallCardDetail = await getCardById(params.id)
+    const card: ScryfallCardDetail = await getCardById(id)
 
     const imageUrl =
       card.image_uris?.png ||

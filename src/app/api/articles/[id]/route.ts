@@ -22,15 +22,18 @@ import { createClient } from '@/app/lib/supabase' // Vérifiez le chemin correct
  *       500:
  *         description: Erreur serveur
  */
-export async function GET(req: Request, { params }: { params: { id: string } }) {
+export async function GET(req: Request, context: { params: Promise<{ id: string }> }) {
+  const { id } = await context.params 
+
   const supabase = await createClient()
   const { data: article, error } = await supabase
     .from('articles')
     .select('*')
-    .eq('id', params.id)
+    .eq('id', id) 
     .single()
 
   if (error) {
+    console.error('Erreur Supabase:', error.message)
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
 
