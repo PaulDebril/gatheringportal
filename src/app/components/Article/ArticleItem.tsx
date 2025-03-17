@@ -18,7 +18,7 @@ const ArticleItem: React.FC<ArticleItemProps> = ({ article }) => {
 
   return (
     <Link
-      href={`/articles/${article.id}`}
+      href={`/actualites/${article.id}`}
       className="block bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden transition transform hover:scale-105"
     >
       <div className="relative w-full h-39">
