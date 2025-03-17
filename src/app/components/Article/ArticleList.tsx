@@ -1,23 +1,40 @@
-"use client";
-import React from "react";
-import ArticleItem, { Article } from "./ArticleItem";
+'use client'
+import React, { useState, useEffect } from 'react'
+import ArticleItem from '@/app/components/Article/ArticleItem'
+import { fetchArticles } from '@/app/services/articleService'
+import { Article } from '@/app/types/articleTypes'
 
-interface ArticleListProps {
-  articles: Article[];
-  limit?: number;
-}
+const ArticleList: React.FC = () => {
+  const [articles, setArticles] = useState<Article[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string>('')
 
-const ArticleList: React.FC<ArticleListProps> = ({ articles, limit }) => {
-  const displayedArticles = limit ? articles.slice(0, limit) : articles;
+  useEffect(() => {
+    const loadArticles = async () => {
+      try {
+        const data = await fetchArticles()
+        setArticles(data)
+      } catch (err) {
+        setError('Impossible de charger les articles.')
+      } finally {
+        setLoading(false)
+      }
+    }
+    loadArticles()
+  }, [])
+
+  if (loading) return <p className="text-center">Chargement des articles...</p>
+  if (error) return <p className="text-center text-red-500">{error}</p>
+
   return (
     <div className="max-w-6xl mx-auto px-4">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        {displayedArticles.map((article) => (
+        {articles.map((article) => (
           <ArticleItem key={article.id} article={article} />
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ArticleList;
+export default ArticleList

@@ -8,6 +8,12 @@ module.exports = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'ztdkrhwqzsldqalpebbl.supabase.co',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 }
@@ -25,6 +31,12 @@ module.exports = withPWA({
       {
         protocol: 'https',
         hostname: 'cards.scryfall.io',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ztdkrhwqzsldqalpebbl.supabase.co',
         port: '',
         pathname: '/**',
       },

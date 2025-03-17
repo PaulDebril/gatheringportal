@@ -1,30 +1,20 @@
-"use client";
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
-import { formatDistanceToNow } from 'date-fns';
-import { fr } from 'date-fns/locale';
-
-export interface Article {
-  id: string | number;
-  title: string;
-  description: string;
-  imageUrl: string;
-  author: string;
-  category: string;
-  publishedAt: string;
-  readingTime: number;
-}
+'use client'
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
+import { formatDistanceToNow } from 'date-fns'
+import { fr } from 'date-fns/locale'
+import { Article } from '@/app/types/articleTypes'
 
 interface ArticleItemProps {
-  article: Article;
+  article: Article
 }
 
 const ArticleItem: React.FC<ArticleItemProps> = ({ article }) => {
   const formattedDate = formatDistanceToNow(new Date(article.publishedAt), {
     addSuffix: true,
     locale: fr,
-  });
+  })
 
   return (
     <Link
@@ -49,7 +39,7 @@ const ArticleItem: React.FC<ArticleItemProps> = ({ article }) => {
           <span className="font-bold">•</span>
           <span>{article.readingTime} minutes</span>
         </div>
-        <h3 className="text-lg font-semibold text-grey-900 dark:text-gray-100 mt-2">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mt-2">
           {article.title}
         </h3>
         <p className="text-gray-600 dark:text-gray-300 text-sm mt-1 line-clamp-2">
@@ -57,7 +47,7 @@ const ArticleItem: React.FC<ArticleItemProps> = ({ article }) => {
         </p>
       </div>
     </Link>
-  );
-};
+  )
+}
 
-export default ArticleItem;
+export default ArticleItem
