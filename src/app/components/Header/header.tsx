@@ -35,12 +35,17 @@ const Header: React.FC = () => {
             </Link>
           </li>
           <li>
+            <Link href="/outils" className="nav-item">
+              Outils
+            </Link>
+          </li>
+          <li>
             <Link href="/">
               <Image
                 src="/images/icon.png"
                 alt="Logo"
-                width={24}
-                height={24}
+                width={30}
+                height={30}
                 className="mx-4"
               />
             </Link>
@@ -48,6 +53,11 @@ const Header: React.FC = () => {
           <li>
             <Link href="/cartes" className="nav-item">
               Cartes
+            </Link>
+          </li>
+          <li>
+            <Link href="/collection" className="nav-item">
+              Collection
             </Link>
           </li>
           <li>
