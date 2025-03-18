@@ -1,14 +1,18 @@
 "use client";
 import React from "react";
 import ArticleList from "@/app/components/Article/ArticleList";
-import Title from "@/app/components/Title";
+import Banner from "@/app/components/Banner";
 
 export default function ActualitesPage() {
   return (
-    <main className="min-h-screen py-10 bg-gray-50 dark:bg-black pt-28">
-      <div className="flex flex-col items-center">
-        <Title text="ACTUALITES" />
-        <ArticleList/>
+    <main className="min-h-screen bg-gray-50 dark:bg-black">
+      <Banner 
+        image="/images/banner.png"
+        title="ACTUALITÉS"
+        description="Découvrez les dernières nouvelles et mises à jour"
+      />
+      <div className="flex flex-col items-center py-10">
+        <ArticleList />
       </div>
     </main>
   );

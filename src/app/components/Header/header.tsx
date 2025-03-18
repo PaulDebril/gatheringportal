@@ -1,14 +1,25 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "@/app/lib/useAuth"; 
 
 const Header: React.FC = () => {
   const { user, loading } = useAuth();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 0);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="w-full fixed py-4 px-8 z-9999 beleren-font flex items-center">
+    <header
+      className={`w-full fixed py-4 px-8 z-9999 beleren-font flex items-center transition-all duration-300 ${
+        isScrolled ? "bg-black/50 backdrop-blur-md" : "bg-transparent"
+      }`}
+    >
       <div className="flex-1" />
       
       <nav className="flex-none">
