@@ -3,9 +3,9 @@
 import React, { useRef, useState, useEffect } from "react";
 import ArticleList from "@/app/components/Article/ArticleList";
 import Title from "./components/Title";
-import Newsletter from "./components/Newsletter/page";
 import HomeCards from "./components/HomeCards";
 import HomeBanner from "./components/HomeBanner";
+import styles from "./Home.module.css";
 
 interface Section {
   name: string;
@@ -95,39 +95,44 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="relative">
-      <ScrollIndicator
-        sections={sections}
-        activeSection={activeSection}
-        onClick={scrollToSection}
-      />
+    <div className={styles.pageBackground}>
+      <div className="relative">
+        <ScrollIndicator
+          sections={sections}
+          activeSection={activeSection}
+          onClick={scrollToSection}
+        />
 
-      <main
-        ref={mainRef}
-        className="snap-y snap-mandatory h-screen overflow-y-scroll scroll-smooth"
-      >
-        <HomeBanner />
+        <main
+          ref={mainRef}
+          className="snap-y snap-mandatory h-screen overflow-y-scroll scroll-smooth "
+        >
+          <HomeBanner />
 
-        <section ref={homeCardsRef} className="snap-start h-screen py-10">
-          <div className="flex flex-col items-center pt-15 h-full">
-            <Title text="EXPLORER GATHERING PORTAL" />
-            <HomeCards />
-          </div>
-        </section>
+          <section ref={homeCardsRef} className="snap-start h-screen py-10">
+            <div className="flex flex-col items-center pt-15 h-full">
+              <Title text="EXPLORER GATHERING PORTAL" />
+              <HomeCards />
+            </div>
+          </section>
 
-        <section ref={newsletterRef} className="snap-start h-screen py-10">
-          <div className="flex flex-col items-center pt-5 h-full">
-            <Newsletter />
-          </div>
-        </section>
+          <section ref={newsletterRef} className="snap-start h-screen py-10">
+            <div className="flex flex-col items-center pt-9 h-full  ">
+              <div className="bg-neutral-900 w-full pt-5 pb-5">
+              <ArticleList/>
+              </div>
+             
+            </div>
+          </section>
 
-        <section ref={actualitesRef} className="snap-start h-screen py-10">
-          <div className="flex flex-col items-center pt-5 h-full">
-            <Title text="ACTUALITÉS" />
-            <ArticleList />
-          </div>
-        </section>
-      </main>
+          <section ref={actualitesRef} className="snap-start h-screen py-10">
+            <div className="flex flex-col items-center pt-5 h-full">
+              <Title text="ACTUALITÉS" />
+              <ArticleList />
+            </div>
+          </section>
+        </main>
+      </div>
     </div>
   );
 };
