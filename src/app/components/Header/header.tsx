@@ -8,58 +8,58 @@ const Header: React.FC = () => {
   const { user, loading } = useAuth();
 
   return (
-    <header className="w-full fixed py-4 flex justify-between items-center px-8 z-9999 beleren-font">
-      <div className="flex items-center">
-        <Link href="/">
-          <Image
-            src="/images/icon.png"
-            alt="icon"
-            width={20}
-            height={20}
-            className="mr-2"
-          />
-        </Link>
-        <Link href="/" className="text-2xl font-bold">
-          Gathering Portal
-        </Link>
-      </div>
-      <nav>
+    <header className="w-full fixed py-4 px-8 z-9999 beleren-font flex items-center">
+      <div className="flex-1" />
+      
+      <nav className="flex-none">
         <ul className="flex items-center space-x-6 text-xl">
           <li>
-            <Link href="/actualites" className="hover:underline">
+            <Link href="/actualites" className="nav-item">
               Actualités
             </Link>
           </li>
           <li>
-            <Link href="/guide" className="hover:underline">
+            <Link href="/guide" className="nav-item">
               Guide
             </Link>
           </li>
           <li>
-            <Link href="/cartes" className="hover:underline">
+            <Link href="/">
+              <Image
+                src="/images/icon.png"
+                alt="Logo"
+                width={24}
+                height={24}
+                className="mx-4"
+              />
+            </Link>
+          </li>
+          <li>
+            <Link href="/cartes" className="nav-item">
               Cartes
             </Link>
           </li>
           <li>
-            <Link href="/decks" className="hover:underline">
+            <Link href="/decks" className="nav-item">
               Deck Builder
             </Link>
           </li>
         </ul>
       </nav>
-      <div>
+      
+      <div className="flex-1 flex justify-end">
         {loading ? (
           <p>Chargement...</p>
         ) : user ? (
           <Link href="/mon-compte">
-            <button className="border rounded bg-amber-950 text-white border-amber-950 py-1 px-4">
-              Mon Compte
+            <button className="parallelogram-button">
+              <span className="parallelogram-text">Mon Compte</span>
             </button>
           </Link>
         ) : (
           <Link href="/auth">
-            <button className="border rounded bg-amber-950 text-white border-amber-950 py-1 px-4">
-              Se connecter
+            <button className="parallelogram-button">
+              <span className="parallelogram-text">Se connecter</span>
             </button>
           </Link>
         )}

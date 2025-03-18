@@ -17,7 +17,7 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="w-full bg-[#1F1F1F] py-10 px-6 md:px-12 text-white">
+    <div className="w-full bg-[#1F1F1F] py-10 px-6 md:px-12 text-white">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
           <div className="text-left">
@@ -69,7 +69,7 @@ const Newsletter = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

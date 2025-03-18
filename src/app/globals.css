@@ -36,3 +36,47 @@ body {
 .beleren-font {
   font-family: 'Beleren', sans-serif;
 }
+
+.nav-item {
+  position: relative;
+  display: inline-block;
+  font-style: normal;
+  padding: 0.20rem 0.5rem;
+}
+.nav-item::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -8px;
+  right: -8px;
+  bottom: -2px;
+  background-color: #d18700; 
+  transform: skewX(-10deg) scaleX(0.8);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: -1;
+}
+.nav-item:hover::after {
+  opacity: 1;
+  transform: skewX(-10deg) scaleX(1);
+}
+.nav-item a {
+  position: relative;
+  z-index: 1;
+}
+
+
+.parallelogram-button {
+  background-color: #d18700;
+  border: 1px solid #d18700;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  transform: skew(-10deg);
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.parallelogram-text {
+  display: inline-block;
+  transform: skew(10deg);
+}
