@@ -8,46 +8,69 @@ const HomeCards = () => {
     {
       title: "ACTUALITÉS",
       href: "/Actualites",
-      image: "/images/magicPerso.png",
+      image: "/images/hero-bg.jpg",
       description: "Retrouvez les dernières infos et annonces autour de Magic."
     },
     {
       title: "GUIDE",
       href: "/Guide",
-      image: "/images/magicPerso.png",
+      image: "/images/hero-bg.jpg",
       description: "Découvrez des conseils et astuces pour bien débuter."
     },
     {
       title: "CARTES",
       href: "/cartes",
-      image: "/images/magicPerso.png",
+      image: "/images/hero-bg.jpg",
       description: "Parcourez notre bibliothèque de cartes pour enrichir vos decks."
     },
     {
       title: "DECK BUILDER",
       href: "/decks",
-      image: "/images/magicPerso.png",
+      image: "/images/hero-bg.jpg",
       description: "Créez, organisez et optimisez vos decks en quelques clics."
+    },
+    {
+      title: "OUTILS",
+      href: "/outils",
+      image: "/images/hero-bg.jpg",
+      description: "Découvrez divers outils pour améliorer votre expérience Magic."
+    },
+    {
+      title: "COLLECTION",
+      href: "/collection",
+      image: "/images/hero-bg.jpg",
+      description: "Explorez votre collection et suivez vos cartes favorites."
     },
   ];
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
         {cards.map((card, index) => (
           <Link
             key={index}
             href={card.href}
-            className="block bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden transition transform hover:scale-105"
+            className="block bg-neutral-800 shadow-lg rounded overflow-hidden transition transform hover:scale-105 h-50"
           >
-            <div className="relative h-60 flex items-center justify-center bg-gray-100 dark:bg-gray-700">
-              <Image src={card.image} alt={card.title} width={300} height={300} />
-            </div>
-            <div className="p-4 text-center">
-              <h2 className="text-xl font-bold beleren-font">{card.title}</h2>
-              <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
-                {card.description}
-              </p>
+            <div className="flex h-full">
+              <div
+                className="relative w-1/2"
+                style={{ clipPath: 'polygon(0 0, 85% 0, 70% 100%, 0 100%)' }}
+              >
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  width={300}
+                  height={300}
+                  className="object-cover h-full w-full"
+                />
+              </div>
+              <div className="w-1/2 p-4 flex flex-col justify-center">
+                <h2 className="text-xl font-bold beleren-font">{card.title}</h2>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+                  {card.description}
+                </p>
+              </div>
             </div>
           </Link>
         ))}
