@@ -116,19 +116,11 @@ const Home: React.FC = () => {
             </div>
           </section>
 
-          <section ref={newsletterRef} className="snap-start h-screen py-10">
-            <div className="flex flex-col items-center pt-9 h-full  ">
-              <div className="bg-neutral-900 w-full pt-5 pb-5">
-              <ArticleList/>
-              </div>
-             
-            </div>
-          </section>
 
           <section ref={actualitesRef} className="snap-start h-screen py-10">
             <div className="flex flex-col items-center pt-5 h-full">
               <Title text="ACTUALITÉS" />
-              <ArticleList />
+              <ArticleList mode="home" />
             </div>
           </section>
         </main>

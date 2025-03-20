@@ -83,3 +83,13 @@ body {
   display: inline-block;
   transform: skew(10deg);
 }
+
+.parallelogram-actualite {
+  background-color: #d18700;
+  border: 1px solid #d18700;
+  color: white;
+  padding: 0.1rem 0.5rem; 
+  transform: skew(-10deg);
+  cursor: pointer;
+  border-radius: 0;
+}
