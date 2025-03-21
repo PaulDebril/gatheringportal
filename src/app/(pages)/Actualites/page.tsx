@@ -5,7 +5,7 @@ import Banner from "@/app/components/Banner";
 
 export default function ActualitesPage() {
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-black">
+    <main className="min-h-screen">
       <Banner 
         image="/images/banner.png"
         title="ACTUALITÉS"

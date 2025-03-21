@@ -6,8 +6,8 @@ export default function GuidePage() {
     <main className="flex flex-col">
       <Banner 
         image="/images/banner.png"
-        title="COLLECTION"
-        description="Retrouvez et gérez vos cartes"
+        title="OUTILS"
+        description="Découvrez les outils qui vous aideront à devenir un meilleur joueur de Magic: The Gathering."
       />
       <ComingSoon />
     </main>
