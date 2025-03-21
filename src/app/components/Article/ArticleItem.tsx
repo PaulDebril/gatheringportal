@@ -1,7 +1,9 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { MdOutlineAccessTimeFilled } from "react-icons/md";
 import { Article } from "@/app/types/articleTypes";
+import Link from "next/link";
 
 interface ActuItemProps {
   article: Article;
@@ -39,42 +41,47 @@ const ArticleItem: React.FC<ActuItemProps> = ({
   onClick,
 }) => {
   return (
-    <div
-      onClick={onClick}
-      role="button"
-      tabIndex={0}
-      className="bg-neutral-800 rounded shadow cursor-pointer transform transition-all duration-200 hover:scale-105 hover:shadow-lg focus:outline-none"
-    >
-      <img
-        src={article.imageUrl || "/images/hero-bg.jpg"}
-        alt={article.title}
-        className={`w-full ${imageHeight} object-cover rounded`}
-      />
-      <div className="p-4">
-        <div className="flex items-center justify-between">
-          <div className="nav-item parallelogram-actualite text-xs uppercase">
-            <span className="parallelogram-text beleren-font">
-              {article.category}
-            </span>
-          </div>
-          <div className="flex items-center space-x-1 text-xs uppercase beleren-font">
-            <span className="inline-flex items-center">
-              <MdOutlineAccessTimeFilled className="mr-1" />
-              <span>{article.readingTime} min</span>
-            </span>
-            <span>•</span>
-            <span>{getRelativeTime(article.publishedAt)}</span>
-          </div>
+    <Link href={`/actualites/${article.id}`}>
+      <div
+        onClick={onClick}
+        role="button"
+        tabIndex={0}
+        className="bg-neutral-800 rounded shadow cursor-pointer transform transition-all duration-200 hover:scale-105 hover:shadow-lg focus:outline-none h-full flex flex-col"
+      >
+        <div className={`relative w-full ${imageHeight} rounded-t`}>
+          <Image
+            src={article.imageUrl || "/images/hero-bg.jpg"}
+            alt={article.title}
+            fill
+            className="object-cover rounded-t"
+          />
         </div>
-        <h2 className={`${titleClass} mt-2 beleren-font`}>
-          {article.title}
-        </h2>
-        <p className={`${textSize} mt-1`}>
-          {article.description.substring(0, 100)}
-          {article.description.length > 100 ? "..." : ""}
-        </p>
+        <div className="p-4 flex flex-col flex-1">
+          <div className="flex items-center justify-between">
+            <div className="nav-item parallelogram-actualite text-xs uppercase">
+              <span className="parallelogram-text beleren-font">
+                {article.category}
+              </span>
+            </div>
+            <div className="flex items-center space-x-1 text-xs uppercase beleren-font">
+              <span className="inline-flex items-center">
+                <MdOutlineAccessTimeFilled className="mr-1" />
+                <span>{article.readingTime} min</span>
+              </span>
+              <span>•</span>
+              <span>{getRelativeTime(article.publishedAt)}</span>
+            </div>
+          </div>
+          <h2 className={`${titleClass} mt-2 beleren-font`}>
+            {article.title}
+          </h2>
+          <p className={`${textSize} mt-1 flex-1`}>
+            {article.description.substring(0, 100)}
+            {article.description.length > 100 ? "..." : ""}
+          </p>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
