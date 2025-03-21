@@ -1,60 +1,100 @@
-'use client'
-import React, { useState, useEffect } from 'react'
-import Image from 'next/image'
-import { format } from 'date-fns'
-import { fr } from 'date-fns/locale'
-import { Article } from '@/app/types/articleTypes'
-import { fetchArticleById } from '@/app/services/articleService'
+"use client";
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import { useParams } from "next/navigation";
+import Link from "next/link";
+import { MdOutlineAccessTimeFilled } from "react-icons/md";
+import { fetchArticleById } from "@/app/services/articleService";
+import { Article } from "@/app/types/articleTypes";
 
-interface ArticleDetailProps {
-  id: string
-}
+const getRelativeTime = (dateStr: string): string => {
+  const now = new Date();
+  const publishedDate = new Date(dateStr);
+  const diffMs = now.getTime() - publishedDate.getTime();
+  const diffMinutes = Math.floor(diffMs / 60000);
+  const diffHours = Math.floor(diffMinutes / 60);
+  const diffDays = Math.floor(diffHours / 24);
 
-const ArticleDetail: React.FC<ArticleDetailProps> = ({ id }) => {
-  const [article, setArticle] = useState<Article | null>(null)
-  const [loading, setLoading] = useState<boolean>(true)
-  const [error, setError] = useState<string>('')
+  if (diffDays > 0) {
+    return `il y a ${diffDays} jour${diffDays > 1 ? "s" : ""}`;
+  } else if (diffHours > 0) {
+    return `il y a ${diffHours} heure${diffHours > 1 ? "s" : ""}`;
+  } else if (diffMinutes > 0) {
+    return `il y a ${diffMinutes} minute${diffMinutes > 1 ? "s" : ""}`;
+  } else {
+    return "à l'instant";
+  }
+};
+
+const ArticleDetail: React.FC = () => {
+  const { id } = useParams();
+  const [article, setArticle] = useState<Article | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string>("");
 
   useEffect(() => {
-    const loadArticle = async () => {
-      try {
-        const data = await fetchArticleById(id)
-        console.log(data)
-        console.log(data)
-        if (!data) {
-          setError('Article introuvable.')
+    if (id) {
+      const loadArticle = async () => {
+        try {
+          const data = await fetchArticleById(id);
+          if (data) {
+            setArticle(data);
+          } else {
+            setError("Article introuvable");
+          }
+        } catch (err) {
+          setError("Erreur lors du chargement de l'article");
+        } finally {
+          setLoading(false);
         }
-        setArticle(data)
-      } catch {
-        setError('Impossible de charger cet article.')
-      } finally {
-        setLoading(false)
-      }
+      };
+      loadArticle();
     }
-    loadArticle()
-  }, [id])
+  }, [id]);
 
-  if (loading) return <p className="text-center">Chargement...</p>
-  if (error) return <p className="text-center text-red-500">{error}</p>
-  if (!article) return null
+  if (loading) return <p>Chargement...</p>;
+  if (error) return <p className="text-red-500">{error}</p>;
+  if (!article) return <p>Article non trouvé.</p>;
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-      <Image
-        src={article.imageUrl}
-        alt={article.title}
-        width={800}
-        height={450}
-        className="rounded-lg"
-      />
-      <h1 className="text-3xl font-bold mt-4">{article.title}</h1>
-      <p className="text-gray-600 mt-2">
-        Publié le {format(new Date(article.publishedAt), 'dd MMMM yyyy', { locale: fr })}
-      </p>
-      <p className="text-gray-500 text-sm mt-1">Auteur : {article.author}</p>
-      <p className="text-gray-700 mt-4">{article.description}</p>
+    <div className="max-w-6xl mx-auto px-4 py-8 min-h-screen">
+      <div className="bg-neutral-800 rounded shadow overflow-hidden">
+        <div className="relative w-full h-64">
+          <Image
+            src={article.imageUrl || "/images/hero-bg.jpg"}
+            alt={article.title}
+            fill
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+        <div className="p-8 pt-4">
+          <div className="flex justify-between items-center">
+            <div className="nav-item parallelogram-actualite text-xs uppercase">
+              <span className="parallelogram-text beleren-font">
+                {article.category}
+              </span>
+            </div>
+            <div className="flex items-center space-x-1 text-gray-300">
+              <MdOutlineAccessTimeFilled className="mr-1" />
+              <span>{article.readingTime} min</span>
+              <span>•</span>
+              <span>{getRelativeTime(article.publishedAt)}</span>
+            </div>
+          </div>
+          <h1 className="text-3xl font-bold mt-4 text-white">
+            {article.title}
+          </h1>
+          <p className="mt-2 text-gray-300">Par {article.author}</p>
+          <p className="mt-4 text-white">{article.description}</p>
+          <Link href="/actualites">
+            <span className="mt-4 inline-block text-blue-500 hover:underline cursor-pointer">
+              Retour aux actualités
+            </span>
+          </Link>
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default ArticleDetail
+export default ArticleDetail;
