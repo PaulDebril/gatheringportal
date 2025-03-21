@@ -12,7 +12,7 @@ export default function ActualitesPage() {
         description="Découvrez les dernières nouvelles et mises à jour"
       />
       <div className="flex flex-col items-center py-10">
-        <ArticleList />
+      <ArticleList mode="articles" />
       </div>
     </main>
   );

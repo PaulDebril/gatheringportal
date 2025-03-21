@@ -1,53 +1,81 @@
-'use client'
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
-import { formatDistanceToNow } from 'date-fns'
-import { fr } from 'date-fns/locale'
-import { Article } from '@/app/types/articleTypes'
+"use client";
+import React from "react";
+import { MdOutlineAccessTimeFilled } from "react-icons/md";
+import { Article } from "@/app/types/articleTypes";
 
-interface ArticleItemProps {
-  article: Article
+interface ActuItemProps {
+  article: Article;
+  imageHeight: string;
+  titleClass: string;
+  textSize: string;
+  onClick?: () => void;
 }
 
-const ArticleItem: React.FC<ArticleItemProps> = ({ article }) => {
-  const formattedDate = formatDistanceToNow(new Date(article.publishedAt), {
-    addSuffix: true,
-    locale: fr,
-  })
+const getRelativeTime = (dateStr: string): string => {
+  const now = new Date();
+  const publishedDate = new Date(dateStr);
+  const diffMs = now.getTime() - publishedDate.getTime();
+  const diffSeconds = Math.floor(diffMs / 1000);
+  const diffMinutes = Math.floor(diffSeconds / 60);
+  const diffHours = Math.floor(diffMinutes / 60);
+  const diffDays = Math.floor(diffHours / 24);
+  
+  if (diffDays > 0) {
+    return `il y a ${diffDays} jour${diffDays > 1 ? "s" : ""}`;
+  } else if (diffHours > 0) {
+    return `il y a ${diffHours} heure${diffHours > 1 ? "s" : ""}`;
+  } else if (diffMinutes > 0) {
+    return `il y a ${diffMinutes} minute${diffMinutes > 1 ? "s" : ""}`;
+  } else {
+    return "à l'instant";
+  }
+};
 
+const ArticleItem: React.FC<ActuItemProps> = ({
+  article,
+  imageHeight,
+  titleClass,
+  textSize,
+  onClick,
+}) => {
   return (
-    <Link
-      href={`/actualites/${article.id}`}
-      className="block bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden transition transform hover:scale-105"
+    <div
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+      className="bg-neutral-800 rounded shadow cursor-pointer transform transition-all duration-200 hover:scale-105 hover:shadow-lg focus:outline-none"
     >
-      <div className="relative w-full h-39">
-        <Image
-          src={article.imageUrl}
-          alt={article.title}
-          width={600}
-          height={400}
-          className="object-cover w-full h-full"
-        />
-      </div>
+      <img
+        src={article.imageUrl || "/images/hero-bg.jpg"}
+        alt={article.title}
+        className={`w-full ${imageHeight} object-cover rounded`}
+      />
       <div className="p-4">
-        <span className="bg-yellow-400 text-black text-xs font-bold uppercase px-3 py-1 rounded">
-          {article.category}
-        </span>
-        <div className="text-gray-500 dark:text-gray-400 text-sm flex items-center gap-2 mt-2">
-          <span>{formattedDate}</span>
-          <span className="font-bold">•</span>
-          <span>{article.readingTime} minutes</span>
+        <div className="flex items-center justify-between">
+          <div className="nav-item parallelogram-actualite text-xs uppercase">
+            <span className="parallelogram-text beleren-font">
+              {article.category}
+            </span>
+          </div>
+          <div className="flex items-center space-x-1 text-xs uppercase beleren-font">
+            <span className="inline-flex items-center">
+              <MdOutlineAccessTimeFilled className="mr-1" />
+              <span>{article.readingTime} min</span>
+            </span>
+            <span>•</span>
+            <span>{getRelativeTime(article.publishedAt)}</span>
+          </div>
         </div>
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mt-2">
+        <h2 className={`${titleClass} mt-2 beleren-font`}>
           {article.title}
-        </h3>
-        <p className="text-gray-600 dark:text-gray-300 text-sm mt-1 line-clamp-2">
-          {article.description}
+        </h2>
+        <p className={`${textSize} mt-1`}>
+          {article.description.substring(0, 100)}
+          {article.description.length > 100 ? "..." : ""}
         </p>
       </div>
-    </Link>
-  )
-}
+    </div>
+  );
+};
 
-export default ArticleItem
+export default ArticleItem;
