@@ -1,11 +1,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { useParams } from "next/navigation";
 import Link from "next/link";
 import { MdOutlineAccessTimeFilled } from "react-icons/md";
 import { fetchArticleById } from "@/app/services/articleService";
 import { Article } from "@/app/types/articleTypes";
+
+interface ArticleDetailProps {
+  id: string;
+}
 
 const getRelativeTime = (dateStr: string): string => {
   const now = new Date();
@@ -26,8 +29,7 @@ const getRelativeTime = (dateStr: string): string => {
   }
 };
 
-const ArticleDetail: React.FC = () => {
-  const { id } = useParams();
+const ArticleDetail: React.FC<ArticleDetailProps> = ({ id }) => {
   const [article, setArticle] = useState<Article | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
@@ -42,7 +44,7 @@ const ArticleDetail: React.FC = () => {
           } else {
             setError("Article introuvable");
           }
-        } catch (err) {
+        } catch {
           setError("Erreur lors du chargement de l'article");
         } finally {
           setLoading(false);
