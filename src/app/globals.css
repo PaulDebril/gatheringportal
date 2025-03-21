@@ -57,6 +57,7 @@ body {
   right: -8px;
   bottom: -2px;
   background-color: #d18700; 
+  color: white !important;
   transform: skewX(-10deg) scaleX(0.8);
   opacity: 0;
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -69,6 +70,10 @@ body {
 .nav-item a {
   position: relative;
   z-index: 1;
+}
+
+.nav-item:hover {
+  color: white !important;
 }
 
 
@@ -95,4 +100,8 @@ body {
   transform: skew(-10deg);
   cursor: pointer;
   border-radius: 0;
+}
+.parallelogram-active {
+  background-color: #fff;
+  color: #000;
 }

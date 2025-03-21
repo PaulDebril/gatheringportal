@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import { MdOutlineAccessTimeFilled } from "react-icons/md";
 import { Article } from "@/app/types/articleTypes";
 import Link from "next/link";
@@ -48,14 +47,11 @@ const ArticleItem: React.FC<ActuItemProps> = ({
         tabIndex={0}
         className="bg-neutral-800 rounded shadow cursor-pointer transform transition-all duration-200 hover:scale-105 hover:shadow-lg focus:outline-none h-full flex flex-col"
       >
-        <div className={`relative w-full ${imageHeight} rounded-t`}>
-          <Image
-            src={article.imageUrl || "/images/hero-bg.jpg"}
-            alt={article.title}
-            fill
-            className="object-cover rounded-t"
-          />
-        </div>
+        <img
+          src={article.imageUrl || "/images/hero-bg.jpg"}
+          alt={article.title}
+          className={`w-full ${imageHeight} object-cover rounded-t`}
+        />
         <div className="p-4 flex flex-col flex-1">
           <div className="flex items-center justify-between">
             <div className="nav-item parallelogram-actualite text-xs uppercase">
