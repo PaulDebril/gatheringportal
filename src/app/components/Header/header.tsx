@@ -106,7 +106,7 @@ const Header: React.FC = () => {
         {loading ? (
           <p>Chargement...</p>
         ) : user ? (
-          <Link href="/mon-compte">
+          <Link href="/account">
             <button className="parallelogram-button">
               <span className="parallelogram-text">Mon Compte</span>
             </button>
