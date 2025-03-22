@@ -93,7 +93,7 @@ export default function AuthPage() {
 
   return (
     <div className={`min-h-screen flex transition-all duration-500 ${isSignUp ? 'flex-row-reverse' : ''}`}>
-      <div className="w-1/2 flex flex-col items-center justify-center p-12 bg-black text-gray-100 transition-all duration-500">
+      <div className="w-1/2 flex flex-col items-center justify-center p-12 text-gray-100 transition-all duration-500">
         <h2 className="text-4xl mb-6 beleren-font">
           {isSignUp ? 'CRÉER UN COMPTE' : 'SE CONNECTER'}
         </h2>
