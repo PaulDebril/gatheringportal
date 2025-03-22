@@ -1,0 +1,22 @@
+.hexagon {
+    position: relative;
+    height: 70px;
+    width: 70px;
+    background: black;
+    clip-path: polygon(50% 0%, 92% 25%, 92% 75%, 50% 100%, 8% 75%, 8% 25%);
+    border-radius: 10px;
+
+  }
+  
+  .hexagon:before {
+    position: absolute;
+    content: '';
+    top: 4px; 
+    left: 4px; 
+    height: calc(100% - 8px);
+    width: calc(100% - 8px);
+    background: url('/images/icon-192x192.png') center/cover no-repeat;
+    clip-path: inherit;
+    border-radius: 10px;
+
+  }
