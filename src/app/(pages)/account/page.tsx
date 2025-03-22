@@ -24,7 +24,7 @@ export default function MyAccount() {
   const [newsletter, setNewsletter] = useState<boolean>(false);
 
   const [loading, setLoading] = useState<boolean>(true);
-  const [saving, setSaving] = useState<boolean>(false);
+  const [saving] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const [message, setMessage] = useState<string>("");
 
@@ -122,7 +122,7 @@ export default function MyAccount() {
                 <form onSubmit={handleSaveInfo} className="mt-6">
                   <div className="mb-6">
                     <label htmlFor="username" className="block font-bold mb-2">
-                      Nom d'utilisateur :
+                      Nom d&apos;utilisateur :
                     </label>
                     <input
                       id="username"
@@ -194,7 +194,7 @@ export default function MyAccount() {
               ) : (
                 <>
                   <p className="mt-6">
-                    <strong>Nom d'utilisateur :</strong> {user.username}
+                    <strong>Nom d&apos;utilisateur :</strong> {user.username}
                   </p>
                   <p className="mt-4">
                     <strong>Email :</strong> {user.email}
