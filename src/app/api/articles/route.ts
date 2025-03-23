@@ -23,3 +23,32 @@ export async function GET() {
 
   return NextResponse.json(articles, { status: 200 })
 }
+
+export async function POST(request: Request) {
+  try {
+    const supabase = await createClient()
+    const { title, content, author_id, image_url } = await request.json()
+
+    const { data, error } = await supabase
+      .from('articles')
+      .insert([
+        {
+          title,
+          content,
+          author_id,
+          image_url,
+        },
+      ])
+      .select('*')
+      .single()
+
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 })
+    }
+
+    return NextResponse.json(data, { status: 201 })
+  } catch (err) {
+    console.error('Erreur lors de la création de l’article :', err)
+    return NextResponse.json({ error: 'Erreur serveur' }, { status: 500 })
+  }
+}
