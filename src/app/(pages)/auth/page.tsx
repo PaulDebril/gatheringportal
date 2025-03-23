@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -40,7 +41,6 @@ const schema = yup.object({
     otherwise: (schema) => schema.notRequired(),
   }),
 });
-
 
 export default function AuthPage() {
   const [isSignUp, setIsSignUp] = useState<boolean>(false);
@@ -92,8 +92,12 @@ export default function AuthPage() {
   };
 
   return (
-    <div className={`min-h-screen flex transition-all duration-500 ${isSignUp ? 'flex-row-reverse' : ''}`}>
-      <div className="w-1/2 flex flex-col items-center justify-center p-12 text-gray-100 transition-all duration-500">
+    <div
+      className={`min-h-screen flex flex-col md:flex-row ${
+        isSignUp ? "md:flex-row-reverse" : ""
+      } justify-center items-center transition-all duration-500`}
+    >
+      <div className="w-full md:w-1/2 flex flex-col items-center justify-center p-12 text-gray-100 transition-all duration-500">
         <h2 className="text-4xl mb-6 beleren-font">
           {isSignUp ? 'CRÉER UN COMPTE' : 'SE CONNECTER'}
         </h2>
@@ -111,16 +115,18 @@ export default function AuthPage() {
             : 'ou utilisez votre compte'}
         </p>
         {error && <p className="text-red-500">{error}</p>}
-        <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-4 text-center">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-3/4 md:w-1/2 space-y-4 text-center">
           {isSignUp && (
             <div>
               <input
                 type="text"
                 placeholder="Nom d'utilisateur"
                 {...register('username')}
-                className="w-1/2 px-4 py-2 border border-gray-700 rounded-lg text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                className="w-full px-4 py-2 border border-gray-700 rounded-lg text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
               />
-              {errors.username && <p className="text-red-500 text-sm">{errors.username.message}</p>}
+              {errors.username && (
+                <p className="text-red-500 text-sm">{errors.username.message}</p>
+              )}
             </div>
           )}
           <div>
@@ -128,9 +134,11 @@ export default function AuthPage() {
               type="email"
               placeholder="Email"
               {...register('email')}
-              className="w-1/2 px-4 py-2 border border-gray-700 rounded-lg text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="w-full px-4 py-2 border border-gray-700 rounded-lg text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
             />
-            {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+            {errors.email && (
+              <p className="text-red-500 text-sm">{errors.email.message}</p>
+            )}
           </div>
           {isSignUp && (
             <div>
@@ -138,12 +146,14 @@ export default function AuthPage() {
                 type="text"
                 placeholder="Numéro de téléphone"
                 {...register('phone')}
-                className="w-1/2 px-4 py-2 border border-gray-700 rounded-lg text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                className="w-full px-4 py-2 border border-gray-700 rounded-lg text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
               />
-              {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
+              {errors.phone && (
+                <p className="text-red-500 text-sm">{errors.phone.message}</p>
+              )}
             </div>
           )}
-          <div className="relative w-1/2 mx-auto">
+          <div className="relative w-full mx-auto">
             <input
               type={showPassword ? 'text' : 'password'}
               placeholder="Mot de passe"
@@ -157,10 +167,12 @@ export default function AuthPage() {
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
-            {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
+            {errors.password && (
+              <p className="text-red-500 text-sm">{errors.password.message}</p>
+            )}
           </div>
           {isSignUp && (
-            <div className="relative w-1/2 mx-auto">
+            <div className="relative w-full mx-auto">
               <input
                 type={showConfirmPassword ? 'text' : 'password'}
                 placeholder="Confirmer le mot de passe"
@@ -174,7 +186,9 @@ export default function AuthPage() {
               >
                 {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
-              {errors.confirmPassword && <p className="text-red-500 text-sm">{errors.confirmPassword.message}</p>}
+              {errors.confirmPassword && (
+                <p className="text-red-500 text-sm">{errors.confirmPassword.message}</p>
+              )}
             </div>
           )}
           {!isSignUp && (
@@ -186,7 +200,7 @@ export default function AuthPage() {
           )}
           <button
             type="submit"
-            className="w-1/2 bg-yellow-600 hover:bg-yellow-700 text-white py-2 rounded-lg transition disabled:opacity-50 beleren-font"
+            className="w-full bg-yellow-600 hover:bg-yellow-700 text-white py-2 rounded-lg transition disabled:opacity-50 beleren-font"
             disabled={loading}
           >
             {loading ? 'Chargement...' : isSignUp ? "S'INSCRIRE" : 'CONNEXION'}
@@ -194,12 +208,15 @@ export default function AuthPage() {
         </form>
         <p className="text-gray-400 mt-4">
           {isSignUp ? 'Déjà un compte ?' : 'Pas encore de compte ?'}{' '}
-          <button onClick={toggleMode} className="text-yellow-600 font-bold hover:underline">
+          <button
+            onClick={toggleMode}
+            className="text-yellow-600 font-bold hover:underline"
+          >
             {isSignUp ? 'Se connecter' : "S'inscrire"}
           </button>
         </p>
       </div>
-      <div className="w-1/2 h-screen relative transition-all duration-500">
+      <div className="hidden md:block w-1/2 h-screen relative transition-all duration-500">
         <Image
           src="/images/imggathering.png"
           alt="Illustration fantasy"
