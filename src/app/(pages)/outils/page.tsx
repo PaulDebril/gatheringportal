@@ -31,7 +31,7 @@ const tools: ToolWithLink[] = [
     title: "TCG Player",
     description: "Découvrez vos cartes et comparez les prix sur TCG Player.",
     externalUrl: "https://www.tcgplayer.com/",
-    imageUrl: "/images/tool-tcg-playerr.png"
+    imageUrl: "/images/tool-tcg-player.png"
   },
   {
     id: 5,

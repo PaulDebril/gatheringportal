@@ -18,7 +18,6 @@ export const metadata = {
   title: "Gathering Portal",
   description: "Une Progressive Web App avec Next.js",
   manifest: "/manifest.json",
-  themeColor: "#000000",
 };
 
 export default function RootLayout({

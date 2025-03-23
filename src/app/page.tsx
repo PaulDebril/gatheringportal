@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useMemo } from "react";
 import ArticleList from "@/app/components/Article/ArticleList";
 import Title from "./components/Title";
 import HomeCards from "./components/HomeCards";
@@ -54,12 +54,12 @@ const Home: React.FC = () => {
   const newsletterRef = useRef<HTMLElement>(null);
   const actualitesRef = useRef<HTMLElement>(null);
 
-  const sections: Section[] = [
+  const sections: Section[] = useMemo(() => [
     { name: "Accueil", ref: landingRef },
     { name: "Explorer", ref: homeCardsRef },
     { name: "Newsletter", ref: newsletterRef },
     { name: "Actualités", ref: actualitesRef },
-  ];
+  ], [landingRef, homeCardsRef, newsletterRef, actualitesRef]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,6 +95,7 @@ const Home: React.FC = () => {
   };
 
   return (
+    
     <div className={styles.pageBackground}>
       <div className="relative">
         <ScrollIndicator
