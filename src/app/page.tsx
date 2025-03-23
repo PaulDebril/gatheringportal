@@ -24,7 +24,7 @@ const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({
   onClick,
 }) => {
   return (
-    <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50">
+    <div className="hidden md:block fixed right-8 top-1/2 transform -translate-y-1/2 z-50">
       <ul className="space-y-4">
         {sections.map((section, index) => (
           <li
@@ -51,13 +51,11 @@ const Home: React.FC = () => {
   const mainRef = useRef<HTMLDivElement>(null);
   const landingRef = useRef<HTMLElement>(null);
   const homeCardsRef = useRef<HTMLElement>(null);
-  const newsletterRef = useRef<HTMLElement>(null);
   const actualitesRef = useRef<HTMLElement>(null);
 
   const sections: Section[] = useMemo(() => [
     { name: "Accueil", ref: landingRef },
     { name: "Explorer", ref: homeCardsRef },
-    { name: "Newsletter", ref: newsletterRef },
     { name: "Actualités", ref: actualitesRef },
   ], [landingRef, homeCardsRef, newsletterRef, actualitesRef]);
 
@@ -106,20 +104,25 @@ const Home: React.FC = () => {
 
         <main
           ref={mainRef}
-          className="snap-y snap-mandatory h-screen overflow-y-scroll scroll-smooth "
+          className="min-h-screen md:h-screen overflow-y-scroll scroll-smooth md:snap-y md:snap-mandatory"
         >
           <HomeBanner />
 
-          <section ref={homeCardsRef} className="snap-start h-screen py-10">
+          <section
+            ref={homeCardsRef}
+            className="py-10 min-h-screen md:h-screen md:snap-start"
+          >
             <div className="flex flex-col items-center pt-15 h-full">
               <Title text="EXPLORER GATHERING PORTAL" />
               <HomeCards />
             </div>
           </section>
 
-
-          <section ref={actualitesRef} className="snap-start h-screen py-10">
-            <div className="flex flex-col items-center pt-5 h-full">
+          <section
+            ref={actualitesRef}
+            className="py-10 min-h-screen md:h-screen md:snap-start"
+          >
+            <div className="flex flex-col items-center pt-20 h-full ">
               <Title text="ACTUALITÉS" />
               <ArticleList mode="home" />
             </div>

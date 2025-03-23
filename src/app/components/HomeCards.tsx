@@ -7,13 +7,13 @@ const HomeCards = () => {
   const cards = [
     {
       title: "ACTUALITÉS",
-      href: "/Actualites",
+      href: "/actualites",
       image: "/images/hero-bg.jpg",
       description: "Retrouvez les dernières infos et annonces autour de Magic."
     },
     {
       title: "GUIDE",
-      href: "/Guide",
+      href: "/guide",
       image: "/images/hero-bg.jpg",
       description: "Découvrez des conseils et astuces pour bien débuter."
     },
