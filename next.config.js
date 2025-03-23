@@ -1,4 +1,3 @@
-// next.config.js
 module.exports = {
   images: {
     remotePatterns: [
@@ -23,6 +22,8 @@ const withPWA = require('next-pwa')({
   skipWaiting: true,
   dest: 'public',
   scope: '/app',
+  swSrc: 'public/custom-sw.js',
+
 })
 
 module.exports = withPWA({

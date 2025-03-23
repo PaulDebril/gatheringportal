@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { useAuth } from "@/app/lib/useAuth";
 import { usePathname } from "next/navigation";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { RiUserSettingsFill } from "react-icons/ri";
 
 const Header: React.FC = () => {
   const { user, loading } = useAuth();
@@ -188,6 +189,13 @@ const Header: React.FC = () => {
               </button>
             </Link>
           )}
+            <Link href="/user-preferences" className="ml-4">
+              <button className="bg-[#d18700] border border-[#d18700] text-white px-2 py-1 transform -skew-x-10 cursor-pointer flex items-center justify-center">
+              <span className="inline-block transform skew-x-10 items-center justify-center p-1">
+                <RiUserSettingsFill />
+              </span>
+              </button>
+            </Link>
         </div>
       </header>
 
