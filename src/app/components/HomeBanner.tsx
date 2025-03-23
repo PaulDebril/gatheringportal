@@ -42,9 +42,10 @@ const HomeBanner: React.FC<HomeBannerProps> = ({ titleText = "Gathering Portal" 
         style={{ backgroundImage: "url('images/bg2.png')" }}
       />
       <div className="absolute inset-0 bg-black/70" />
-      <div className="absolute inset-0 flex flex-col items-center justify-center">
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 md:px-8">
         <motion.h1
-          className="text-8xl font-bold text-[#e2b155] beleren-font text-center leading-tight"
+          className="w-full max-w-[95%] font-bold beleren-font text-[#e2b155] leading-tight 
+                     text-5xl sm:text-6xl md:text-7xl lg:text-8xl"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -77,7 +78,7 @@ const HomeBanner: React.FC<HomeBannerProps> = ({ titleText = "Gathering Portal" 
           })}
         </motion.h1>
         <motion.p
-          className="mt-4 text-3xl text-gray-200 beleren-font text-center"
+          className="mt-4 text-gray-200 beleren-font text-center text-xl sm:text-2xl md:text-3xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: showSubtitle ? 1 : 0 }}
           transition={{ duration: 2 }}
