@@ -119,7 +119,7 @@ export default function PushNotificationsPreferences() {
 
         <div className="mb-8">
           <h2 className="text-xl font-bold mb-4">
-            Tester l'envoi d'une notification
+            Tester l&apos;envoi d&apos;une notification
           </h2>
           <input
             type="text"

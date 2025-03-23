@@ -33,11 +33,11 @@ const LegalMentions: React.FC = () => {
         </p>
         <h2 className="text-2xl font-semibold mb-4">Responsabilité</h2>
         <p className="mb-4 leading-relaxed">
-          Gathering Portal ne saurait être tenu responsable des dommages directs ou indirects pouvant survenir lors de l'utilisation du site. Les informations sont fournies à titre indicatif et peuvent être modifiées sans préavis.
+          Gathering Portal ne saurait être tenu responsable des dommages directs ou indirects pouvant survenir lors de l&apos;utilisation du site. Les informations sont fournies à titre indicatif et peuvent être modifiées sans préavis.
         </p>
         <h2 className="text-2xl font-semibold mb-4">Cookies</h2>
         <p className="mb-4 leading-relaxed">
-          Le site utilise des cookies pour améliorer l'expérience utilisateur. En continuant de naviguer sur le site, vous acceptez notre utilisation des cookies conformément à notre politique.
+          Le site utilise des cookies pour améliorer l&apos;expérience utilisateur. En continuant de naviguer sur le site, vous acceptez notre utilisation des cookies conformément à notre politique.
         </p>
         <h2 className="text-2xl font-semibold mb-4">Données personnelles</h2>
         <p className="mb-4 leading-relaxed">
