@@ -1,55 +1,61 @@
-'use client'
-import React, { useState, useEffect, Suspense } from 'react'
-import { motion } from 'framer-motion'
-import { useRouter, useSearchParams } from 'next/navigation'
-import CardItem from '@/app/components/Cards/CardItem'
-import { FaSearch } from 'react-icons/fa'
-import { searchCards } from '@/app/services/scryfallService'
-import { ScryfallCard } from '@/app/types/scryfallTypes'
+"use client";
+import React, { useState, useEffect, Suspense } from "react";
+import { motion } from "framer-motion";
+import { useRouter, useSearchParams } from "next/navigation";
+import CardItem from "@/app/components/Cards/CardItem";
+import { FaSearch } from "react-icons/fa";
+import { searchCards } from "@/app/services/scryfallService";
+import { ScryfallCard } from "@/app/types/scryfallTypes";
 
 const containerVariants = {
   hidden: {},
   visible: {
     transition: { staggerChildren: 0.1 },
   },
-}
+};
 
 function CardSearchContent() {
-  const router = useRouter()
-  const searchParams = useSearchParams()
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-  const [query, setQuery] = useState<string>('')
-  const [cards, setCards] = useState<ScryfallCard[]>([])
-  const [loading, setLoading] = useState<boolean>(false)
-  const [error, setError] = useState<string>('')
+  const [query, setQuery] = useState<string>("");
+  const [cards, setCards] = useState<ScryfallCard[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   useEffect(() => {
-    const initialQuery = searchParams.get('q') || ''
-    setQuery(initialQuery)
-    if (initialQuery.trim() !== '') {
-      effectuerRecherche(initialQuery)
+    const initialQuery = searchParams.get("q") || "";
+    if (initialQuery.trim() === "") {
+      const randomQueries = ["dragon", "wizard", "artifact","lotus","spider","assassin", "Ezio"];
+      const randomQuery =
+        randomQueries[Math.floor(Math.random() * randomQueries.length)];
+      setQuery(randomQuery);
+      effectuerRecherche(randomQuery);
+    } else {
+      setQuery(initialQuery);
+      effectuerRecherche(initialQuery);
     }
-  }, [searchParams])
+  }, [searchParams]);
 
   const effectuerRecherche = async (q: string) => {
-    setLoading(true)
-    setError('')
+    setLoading(true);
+    setError("");
     try {
-      const result = await searchCards(q)
-      setCards(result)
+      const result = await searchCards(q);
+      setCards(result);
     } catch {
-      setError('Une erreur est survenue lors de la recherche.')
+      setError("Une erreur est survenue lors de la recherche.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    if (query.trim() === '') return
-    router.push(`?q=${encodeURIComponent(query)}`, { scroll: false })
-    effectuerRecherche(query)
-  }
+    e.preventDefault();
+    if (query.trim() === "") return;
+    router.push(`?q=${encodeURIComponent(query)}`, { scroll: false });
+    effectuerRecherche(query);
+  };
 
   return (
     <div className="card-search">
@@ -70,12 +76,13 @@ function CardSearchContent() {
         </div>
       </form>
 
-      <div className='flex justify-center w-full mb-10'>
+      <div className="flex justify-center w-full mb-10">
         <div className="flex flex-col items-center mt-8 w-1/2">
           {loading && <p>Chargement...</p>}
-          {error && <p className="text-red-500">{error}</p>}    
+          {error && <p className="text-red-500">{error}</p>}
           {cards.length > 0 && (
-            <motion.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-8"
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-8"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
@@ -88,7 +95,7 @@ function CardSearchContent() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default function CardSearch() {
@@ -96,5 +103,5 @@ export default function CardSearch() {
     <Suspense fallback={<div>Loading...</div>}>
       <CardSearchContent />
     </Suspense>
-  )
+  );
 }
