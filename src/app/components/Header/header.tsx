@@ -314,27 +314,28 @@ const Header: React.FC = () => {
                 </li>
               </ul>
             </nav>
-            <div className="mt-8 flex justify-center px-4">
-              {loading ? (
-                <p className="text-center">Chargement...</p>
-              ) : user ? (
-                <Link href="/account" onClick={() => setMobileMenuOpen(false)}>
-                  <button className="bg-[#d18700] border border-[#d18700] text-white px-4 py-3 transform -skew-x-10 cursor-pointer">
-                    <span className="inline-block transform skew-x-10">
-                      Mon Compte
-                    </span>
-                  </button>
-                </Link>
-              ) : (
-                <Link href="/auth" onClick={() => setMobileMenuOpen(false)}>
-                  <button className="bg-[#d18700] border border-[#d18700] text-white px-4 py-3 transform -skew-x-10 cursor-pointer">
-                    <span className="inline-block transform skew-x-10">
-                      Se connecter
-                    </span>
-                  </button>
-                </Link>
-              )}
-            </div>
+            <div className="mt-8 flex flex-col items-center space-y-4 w-full px-4">
+            <Link href="/user-preferences" onClick={() => setMobileMenuOpen(false)}>
+              <button className="w-full max-w-xs bg-neutral-800 border border-neutral-800 text-white px-4 py-3 transform -skew-x-10 cursor-pointer">
+                <span className="inline-block transform skew-x-10">Préférences</span>
+              </button>
+            </Link>
+            {loading ? (
+              <p className="text-center">Chargement...</p>
+            ) : user ? (
+              <Link href="/account" onClick={() => setMobileMenuOpen(false)}>
+                <button className="w-full max-w-xs bg-[#d18700] border border-[#d18700] text-white px-4 py-3 transform -skew-x-10 cursor-pointer">
+                  <span className="inline-block transform skew-x-10">Mon Compte</span>
+                </button>
+              </Link>
+            ) : (
+              <Link href="/auth" onClick={() => setMobileMenuOpen(false)}>
+                <button className="w-full max-w-xs bg-[#d18700] border border-[#d18700] text-white px-4 py-3 transform -skew-x-10 cursor-pointer">
+                  <span className="inline-block transform skew-x-10">Se connecter</span>
+                </button>
+              </Link>
+            )}
+          </div>
           </div>
         </div>
       )}

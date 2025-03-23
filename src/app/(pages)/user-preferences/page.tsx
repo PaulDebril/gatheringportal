@@ -56,7 +56,6 @@ export default function PushNotificationsPreferences() {
   async function unsubscribeFromPush() {
     if (subscription) {
       try {
-        // Désabonnez le PushManager
         await subscription.unsubscribe();
         await unsubscribeUser(subscription);
         setSubscription(null);
@@ -93,50 +92,52 @@ export default function PushNotificationsPreferences() {
   }
 
   return (
-    <div className="container mx-auto pt-54 px- min-h-screen ">
-      <div className="mb-8 bg-neutral-800 rounded shadow p-8 text-white">
-      <h1 className="text-3xl font-bold mb-6 text-center">
-        Préférences utilisateur
-      </h1>
+    <div className="max-w-7xl mx-auto p-4 md:p-10 min-h-screen pt-16 md:pt-32">
+      <div className="mb-8 bg-neutral-800 rounded shadow p-6 md:p-8 text-white">
+        <h1 className="text-3xl font-bold mb-6 text-center beleren-font">
+          Préférences utilisateur
+        </h1>
 
-      <div className="flex items-center mb-8">
-        <label htmlFor="notifications-toggle" className="mr-4 font-bold">
-          Notifications :
-        </label>
-        <label className="inline-flex items-center cursor-pointer">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-start mb-8">
+          <label htmlFor="notifications-toggle" className="mr-4 font-bold whitespace-nowrap">
+            Notifications :
+          </label>
+          <label className="inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              id="notifications-toggle"
+              checked={notificationsEnabled}
+              onChange={handleToggleChange}
+              className="sr-only peer"
+            />
+            <div className="relative w-11 h-6 bg-gray-200 rounded-full peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#d18700] dark:peer-focus:ring-[#d18700] dark:bg-gray-700 peer-checked:bg-[#d18700] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:after:translate-x-full"></div>
+            <span className="ml-3 text-sm font-medium text-gray-300">
+              {notificationsEnabled ? "Activées" : "Désactivées"}
+            </span>
+          </label>
+        </div>
+
+        <div className="mb-8">
+          <h2 className="text-xl font-bold mb-4">
+            Tester l'envoi d'une notification
+          </h2>
           <input
-            type="checkbox"
-            id="notifications-toggle"
-            checked={notificationsEnabled}
-            onChange={handleToggleChange}
-            className="sr-only peer"
+            type="text"
+            placeholder="Titre ou message de l'article"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            className="w-full p-2 rounded bg-neutral-700 text-white mb-4"
           />
-          <div className="relative w-11 h-6 bg-gray-200 rounded-full peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-[#d18700] dark:peer-focus:ring-[#d18700] dark:bg-gray-700 peer-checked:bg-[#d18700] after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:after:translate-x-full"></div>
-          <span className="ml-3 text-sm font-medium text-gray-300">
-            {notificationsEnabled ? "Activées" : "Désactivées"}
-          </span>
-        </label>
+          <div className="flex">
+            <button
+              onClick={simulateNewArticle}
+              className="ml-auto bg-[#d18700] text-white px-4 py-2 rounded beleren-font"
+            >
+              Envoyer notification
+            </button>
+          </div>
+        </div>
       </div>
-
-      <div className="mb-8">
-        <h2 className="text-xl font-bold mb-4">
-          Tester l'envoi d'une notification
-        </h2>
-        <input
-          type="text"
-          placeholder="Titre ou message de l'article"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="w-full p-2 rounded bg-neutral-700 text-white mb-4"
-        />
-        <button
-          onClick={simulateNewArticle}
-          className="bg-[#d18700] text-white px-4 py-2 rounded"
-        >
-          Envoyer notification
-        </button>
-      </div>
-    </div>
     </div>
   );
 }
