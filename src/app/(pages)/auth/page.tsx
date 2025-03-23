@@ -8,6 +8,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FaGoogle, FaApple, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
+import { useAuth } from "@/app/context/AuthContext";
 
 interface AuthFormData {
   username?: string;
@@ -43,6 +44,9 @@ const schema = yup.object({
 });
 
 export default function AuthPage() {
+
+  const { refreshUser } = useAuth();
+
   const [isSignUp, setIsSignUp] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -74,6 +78,8 @@ export default function AuthPage() {
         throw new Error(result.error || 'Une erreur est survenue');
       }
       reset();
+      await refreshUser();
+
       router.push('/');
     } catch (err: unknown) {
       if (err instanceof Error) {

@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import { useAuth } from "@/app/lib/useAuth";
+import { useAuth } from "@/app/context/AuthContext";
 import { usePathname } from "next/navigation";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { RiUserSettingsFill } from "react-icons/ri";
