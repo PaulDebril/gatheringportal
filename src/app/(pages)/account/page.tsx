@@ -2,6 +2,7 @@
 import React, { useState, useEffect, FormEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/app/context/AuthContext";
 
 interface User {
   id: string;
@@ -26,6 +27,9 @@ export default function MyAccount() {
   const [message, setMessage] = useState<string>("");
 
   const router = useRouter();
+
+  const { refreshUser } = useAuth();
+  
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -61,6 +65,7 @@ export default function MyAccount() {
   const handleLogout = async () => {
     try {
       await fetch("/api/auth/logout", { method: "POST" });
+      await refreshUser();
       router.push("/auth");
     } catch (err) {
       console.error("Erreur lors de la déconnexion :", err);

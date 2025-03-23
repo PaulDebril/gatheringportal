@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import ComingSoon from "@/app/components/ComingSoon";
 import { createArticle } from "@/app/services/articleService";
+import { sendNotification } from "../user-preferences/actions";
 
 type AdminTab = "ajouter" | "modifier" | "supprimer";
 
@@ -22,11 +23,12 @@ export default function AdminPage() {
       }
       const payload = { title, content, image_url };
       await createArticle(payload);
+      sendNotification(title);
       setMessage("Article créé avec succès !");
       setTitle("");
       setContent("");
       setImageFile(null);
-    } catch (error) {
+    } catch{
       setMessage("Erreur lors de la création de l&apos;article.");
     }
   };

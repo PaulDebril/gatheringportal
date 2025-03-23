@@ -4,7 +4,7 @@ import { FaPlus, FaMinus, FaSyncAlt, FaUndo, FaTimes } from 'react-icons/fa'
 import { GiTabletopPlayers } from 'react-icons/gi'
 import { IoIosSettings } from 'react-icons/io'
 import { LuLayoutPanelTop } from 'react-icons/lu'
-import './style.css'; 
+import './style.css'
 
 export default function LifeCounterPage() {
   const [top, setTop] = useState(40)
@@ -24,6 +24,28 @@ export default function LifeCounterPage() {
   const [player2Name, setPlayer2Name] = useState("Joueur 2")
 
   const [startingLife, setStartingLife] = useState(40)
+
+  useEffect(() => {
+    const savedState = localStorage.getItem("lifeCounterState")
+    console.log(savedState)
+    if (savedState) {
+      try {
+        const { top, bottom, player1Name, player2Name, startingLife } = JSON.parse(savedState)
+        setTop(top)
+        setBottom(bottom)
+        setPlayer1Name(player1Name)
+        setPlayer2Name(player2Name)
+        setStartingLife(startingLife)
+      } catch (error) {
+        console.error("Erreur lors du parsing du state sauvegardé :", error)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    const stateToSave = { top, bottom, player1Name, player2Name, startingLife }
+    localStorage.setItem("lifeCounterState", JSON.stringify(stateToSave))
+  }, [top, bottom, player1Name, player2Name, startingLife])
 
   useEffect(() => {
     const colorList = ['bg-yellow-500', 'bg-pink-400', 'bg-blue-500', 'bg-green-500', 'bg-red-500']
@@ -86,7 +108,6 @@ export default function LifeCounterPage() {
 
   return (
     <main className="relative w-full h-screen font-sans bg-black">
-
       <div className="absolute inset-0 flex flex-col justify-between">
         <div className={`m-6 mb-2 flex-1 rounded-lg shadow-lg overflow-hidden ${isTopRotated ? 'rotate-180' : ''} ${colors[0]}`}>
           <div className="relative text-black p-4 h-full">
@@ -131,7 +152,7 @@ export default function LifeCounterPage() {
             </button>
             <button
               onClick={() => handleBottomChange(1)}
-              className="absolute right-1/4 top-1/2 -translate-y-1/2 text-4xl hover:scale-110 transition-transform"
+              className="absolute right-1/4 top-1/2 -translate-y-1/2 text-4xl hover:scale-110 transition-transform flex items-center"
               aria-label="Décrémenter Joueur 2"
             >
               <FaPlus />
@@ -144,7 +165,6 @@ export default function LifeCounterPage() {
             >
               <FaMinus />
               {bottomChange < 0 && <span className="ml-2 text-6xl beleren-font">{Math.abs(bottomChange)}</span>}
-
             </button>
             <div className="flex flex-col items-center justify-center h-full">
               <div className="text-[120px] beleren-font">{bottom}</div>
@@ -170,7 +190,7 @@ export default function LifeCounterPage() {
           <FaSyncAlt size={24} />
         </button>
         <button
-          onClick={() => { }}
+          onClick={() => { window.location.href = '/' }}
           className="hexagon hover:scale-110 transition-transform flex justify-center items-center"
           aria-label="Bouton hexagon"
         >

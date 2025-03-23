@@ -3,6 +3,7 @@ import "./globals.css";
 import Head from "next/head";
 import HeaderFooterWrapper from "@/app/components/HeaderFooterWrapper";
 import { AuthProvider } from "./context/AuthContext";
+import OfflineBanner from "./components/OfflineBanner"; 
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,19 +26,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
   return (
     <html lang="en">
       <Head>
         <link rel="manifest" href="/manifest.json" />
       </Head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-      <AuthProvider>
-
-        <HeaderFooterWrapper>
-          {children}
-        </HeaderFooterWrapper>
+        <AuthProvider>
+          <OfflineBanner />
+          <HeaderFooterWrapper>
+            {children}
+          </HeaderFooterWrapper>
         </AuthProvider>
-
       </body>
     </html>
   );
