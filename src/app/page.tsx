@@ -57,7 +57,7 @@ const Home: React.FC = () => {
     { name: "Accueil", ref: landingRef },
     { name: "Explorer", ref: homeCardsRef },
     { name: "Actualités", ref: actualitesRef },
-  ], [landingRef, homeCardsRef, newsletterRef, actualitesRef]);
+  ], [landingRef, homeCardsRef, actualitesRef]);
 
   useEffect(() => {
     const handleScroll = () => {

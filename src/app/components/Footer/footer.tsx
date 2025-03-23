@@ -32,11 +32,7 @@ const Footer: React.FC = () => {
                 Politique de confidentialité
               </Link>
             </li>
-            <li>
-              <Link href="/contact" className="hover:underline">
-                Contact
-              </Link>
-            </li>
+           
           </ul>
         </div>
         <p className="mt-4 text-xs leading-relaxed">
