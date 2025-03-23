@@ -1,5 +1,3 @@
-// src/app/services/AuthService.ts
-
 interface AuthData {
     username?: string;
     email: string;

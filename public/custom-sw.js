@@ -24,7 +24,7 @@ self.addEventListener('push', function (event) {
 self.addEventListener('notificationclick', function (event) {
   console.log('Notification click received.');
   event.notification.close();
-  event.waitUntil(clients.openWindow('https://votre-site.com'));
+  event.waitUntil(clients.openWindow('https://gatheringportal.vercel.app'));
 });
 
 registerRoute(

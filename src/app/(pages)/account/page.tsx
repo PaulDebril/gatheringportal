@@ -3,6 +3,7 @@ import React, { useState, useEffect, FormEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/context/AuthContext";
+import { updateUser } from "@/app/services/userService"; 
 
 interface User {
   id: string;
@@ -19,17 +20,14 @@ export default function MyAccount() {
   const [editingInfo, setEditingInfo] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
 
   const [loading, setLoading] = useState<boolean>(true);
-  const [saving] = useState<boolean>(false);
+  const [saving, setSaving] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const [message, setMessage] = useState<string>("");
 
   const router = useRouter();
-
   const { refreshUser } = useAuth();
-  
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -42,7 +40,6 @@ export default function MyAccount() {
         setUser(data.user);
         setUsername(data.user.username);
         setEmail(data.user.email);
-        setPhone("");
       } catch (err) {
         setError((err as Error).message);
       } finally {
@@ -52,13 +49,25 @@ export default function MyAccount() {
     fetchUser();
   }, []);
 
-  const handleSaveInfo = (e: FormEvent) => {
+  const handleSaveInfo = async (e: FormEvent) => {
     e.preventDefault();
-    if (user) {
-      const updatedUser = { ...user, username, email };
-      setUser(updatedUser);
+    if (!user) return;
+
+    setSaving(true);
+    setMessage("");
+    setError("");
+
+    try {
+      await updateUser({ username, email });
+
+      setUser((prev) => (prev ? { ...prev, username, email } : null));
+
       setMessage("Mise à jour réussie !");
       setEditingInfo(false);
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -77,9 +86,7 @@ export default function MyAccount() {
   };
 
   const handleAccountDeletion = () => {
-    const confirmation = window.confirm(
-      "Êtes-vous sûr de vouloir désactiver votre compte ?"
-    );
+    const confirmation = window.confirm("Êtes-vous sûr de vouloir désactiver votre compte ?");
     if (confirmation) {
       alert("Votre compte a été désactivé.");
       router.push("/auth");
@@ -169,19 +176,6 @@ export default function MyAccount() {
                     />
                   </div>
                   <div className="mb-6">
-                    <label htmlFor="phone" className="block font-bold mb-2">
-                      Numéro de téléphone :
-                    </label>
-                    <input
-                      id="phone"
-                      type="text"
-                      className="w-full p-2 rounded bg-neutral-700 text-white"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      placeholder="Non renseigné"
-                    />
-                  </div>
-                  <div className="mb-6">
                     <Link href="/account/change-password">
                       <span className="text-sm font-medium text-[#d18700] hover:underline">
                         Changer mon mot de passe
@@ -189,6 +183,7 @@ export default function MyAccount() {
                     </Link>
                   </div>
                   {message && <p className="text-green-500 mb-4">{message}</p>}
+                  {error && <p className="text-red-500 mb-4">{error}</p>}
                   <div className="flex space-x-4 justify-end">
                     <button
                       type="submit"
@@ -205,7 +200,8 @@ export default function MyAccount() {
                         setEditingInfo(false);
                         setUsername(user.username);
                         setEmail(user.email);
-                        setPhone("");
+                        setMessage("");
+                        setError("");
                       }}
                       className="bg-gray-600 border border-gray-600 text-white py-1 px-2 transform skew-x-[-10deg] cursor-pointer rounded-none text-sm hover:bg-gray-500"
                     >
@@ -222,9 +218,6 @@ export default function MyAccount() {
                   </p>
                   <p className="mt-4">
                     <strong>Email :</strong> {user.email}
-                  </p>
-                  <p className="mt-4">
-                    <strong>Numéro de téléphone :</strong> {phone || "Non renseigné"}
                   </p>
                   <div className="mt-4">
                     <Link href="/account/change-password">
@@ -265,9 +258,7 @@ export default function MyAccount() {
                 </button>
               </div>
               <div className="flex items-center">
-                <label className="mr-4 font-bold">
-                  Désactiver le compte
-                </label>
+                <label className="mr-4 font-bold">Désactiver le compte</label>
                 <button
                   onClick={handleAccountDeletion}
                   className="bg-[#d18700] border border-[#d18700] text-white py-1 px-2 transform skew-x-[-10deg] cursor-pointer rounded-none text-sm"
