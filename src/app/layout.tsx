@@ -1,9 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
 import Head from "next/head";
 import HeaderFooterWrapper from "@/app/components/HeaderFooterWrapper";
-import { AuthProvider } from "./context/AuthContext";
-import OfflineBanner from "./components/OfflineBanner"; 
+import { AuthProvider } from "@/app/context/AuthContext";
+import OfflineBanner from "@/app/components/ui/OfflineBanner"; 
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

@@ -44,9 +44,9 @@ const Header: React.FC = () => {
           <ul className="flex items-center space-x-6 text-xl">
             <li>
               <Link
-                href="/actualites"
+                href="/news"
                 className={`group relative inline-block font-normal pt-[0.2rem] pb-[0.2rem] pl-[0.5rem] pr-[0.5rem] transition-colors duration-300 ${
-                  isActive("/actualites")
+                  isActive("/news")
                     ? "text-[#e2b155]"
                     : "hover:text-white"
                 }`}
@@ -61,14 +61,14 @@ const Header: React.FC = () => {
             </li>
             <li>
               <Link
-                href="/guide"
+                href="/guides"
                 className={`group relative inline-block font-normal pt-[0.2rem] pb-[0.2rem] pl-[0.5rem] pr-[0.5rem] transition-colors duration-300 ${
-                  isActive("/guide")
+                  isActive("/guides")
                     ? "text-[#e2b155]"
                     : "hover:text-white"
                 }`}
               >
-                <span className="relative z-10">Guide</span>
+                <span className="relative z-10">Guides</span>
                 <span
                   className="absolute -top-[2px] -left-[8px] -right-[8px] -bottom-[2px]
                              bg-[#d18700] transform skew-x-[-10deg] scale-x-[0.8] opacity-0
@@ -78,9 +78,9 @@ const Header: React.FC = () => {
             </li>
             <li>
               <Link
-                href="/outils"
+                href="/tools"
                 className={`group relative inline-block font-normal pt-[0.2rem] pb-[0.2rem] pl-[0.5rem] pr-[0.5rem] transition-colors duration-300 ${
-                  isActive("/outils")
+                  isActive("/tools")
                     ? "text-[#e2b155]"
                     : "hover:text-white"
                 }`}
@@ -106,9 +106,9 @@ const Header: React.FC = () => {
             </li>
             <li>
               <Link
-                href="/cartes"
+                href="/cards"
                 className={`group relative inline-block font-normal pt-[0.2rem] pb-[0.2rem] pl-[0.5rem] pr-[0.5rem] transition-colors duration-300 ${
-                  isActive("/cartes")
+                  isActive("/cards")
                     ? "text-[#e2b155]"
                     : "hover:text-white"
                 }`}
@@ -206,9 +206,9 @@ const Header: React.FC = () => {
               <ul className="flex flex-col items-center space-y-6 text-2xl">
                 <li>
                   <Link
-                    href="/actualites"
+                    href="/news"
                     className={`group relative inline-block font-normal pt-[0.2rem] pb-[0.2rem] pl-[0.5rem] pr-[0.5rem] transition-colors duration-300 ${
-                      isActive("/actualites")
+                      isActive("/news")
                         ? "text-[#e2b155]"
                         : "hover:text-white"
                     }`}
@@ -224,15 +224,15 @@ const Header: React.FC = () => {
                 </li>
                 <li>
                   <Link
-                    href="/guide"
+                    href="/guides"
                     className={`group relative inline-block font-normal pt-[0.2rem] pb-[0.2rem] pl-[0.5rem] pr-[0.5rem] transition-colors duration-300 ${
-                      isActive("/guide")
+                      isActive("/guides")
                         ? "text-[#e2b155]"
                         : "hover:text-white"
                     }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <span className="relative z-10">Guide</span>
+                    <span className="relative z-10">Guides</span>
                     <span
                       className="absolute -top-[2px] -left-[8px] -right-[8px] -bottom-[2px]
                                  bg-[#d18700] transform skew-x-[-10deg] scale-x-[0.8] opacity-0
@@ -242,9 +242,9 @@ const Header: React.FC = () => {
                 </li>
                 <li>
                   <Link
-                    href="/outils"
+                    href="/tools"
                     className={`group relative inline-block font-normal pt-[0.2rem] pb-[0.2rem] pl-[0.5rem] pr-[0.5rem] transition-colors duration-300 ${
-                      isActive("/outils")
+                      isActive("/tools")
                         ? "text-[#e2b155]"
                         : "hover:text-white"
                     }`}
@@ -260,9 +260,9 @@ const Header: React.FC = () => {
                 </li>
                 <li>
                   <Link
-                    href="/cartes"
+                    href="/cards"
                     className={`group relative inline-block font-normal pt-[0.2rem] pb-[0.2rem] pl-[0.5rem] pr-[0.5rem] transition-colors duration-300 ${
-                      isActive("/cartes")
+                      isActive("/cards")
                         ? "text-[#e2b155]"
                         : "hover:text-white"
                     }`}

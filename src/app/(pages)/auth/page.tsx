@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { FaGoogle, FaApple, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
 import { useAuth } from "@/app/context/AuthContext";
+import { login, signup } from '@/app/services/authService';
 
 interface AuthFormData {
   username?: string;
@@ -63,23 +64,19 @@ export default function AuthPage() {
     resolver: yupResolver(schema, { context: { isSignUp } }),
   });
 
-  const onSubmit: SubmitHandler<AuthFormData> = async (data) => {
+  const onSubmit: SubmitHandler<AuthFormData> = async (formData) => {
     setLoading(true);
     setError(null);
+
     try {
-      const endpoint = isSignUp ? '/api/auth/signup' : '/api/auth/login';
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-      const result = await response.json();
-      if (!response.ok) {
-        throw new Error(result.error || 'Une erreur est survenue');
+      if (isSignUp) {
+        await signup(formData);
+      } else {
+        await login(formData);
       }
+
       reset();
       await refreshUser();
-
       router.push('/');
     } catch (err: unknown) {
       if (err instanceof Error) {

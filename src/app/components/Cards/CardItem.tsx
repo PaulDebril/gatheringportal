@@ -35,7 +35,7 @@ export default function CardItem({ card, quality = 'normal' }: CardItemProps) {
   if (!imageUrl) return null
 
   return (
-    <Link href={`/cartes/${card.id}`} className="block">
+    <Link href={`/cards/${card.id}`} className="block">
       <motion.div
         className="card-item cursor-pointer transition-transform duration-200"
         variants={itemVariants}

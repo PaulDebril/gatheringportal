@@ -41,7 +41,7 @@ const ArticleItem: React.FC<ActuItemProps> = ({
   onClick,
 }) => {
   return (
-    <Link href={`/actualites/${article.id}`}>
+    <Link href={`/news/${article.id}`}>
       <div
         onClick={onClick}
         role="button"

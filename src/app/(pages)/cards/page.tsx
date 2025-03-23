@@ -1,5 +1,5 @@
 import CardSearch from '@/app/components/Cards/CardSearch'
-import Banner from '@/app/components/Banner'
+import Banner from '@/app/components/ui/Banner'
 
 export default function CardPage() {
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Banner from "@/app/components/Banner";
+import Banner from "@/app/components/ui/Banner";
 
 const About: React.FC = () => {
   return (

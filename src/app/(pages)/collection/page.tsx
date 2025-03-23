@@ -1,7 +1,7 @@
-import Banner from '@/app/components/Banner'
-import ComingSoon from '@/app/components/ComingSoon'
+import Banner from '@/app/components/ui/Banner'
+import ComingSoon from '@/app/components/ui/ComingSoon'
 
-export default function GuidePage() {
+export default function CollectionPage() {
   return (
     <main className="flex flex-col">
       <Banner 

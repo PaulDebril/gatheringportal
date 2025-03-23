@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { fetchArticles } from "@/app/services/articleService";
 import { Article } from "@/app/types/articleTypes";
-import ArticleItem from "./ArticleItem";
+import ArticleItem from "@/app/components/Article/ArticleItem";
 
 interface ArticleListProps {
   mode?: "home" | "articles";

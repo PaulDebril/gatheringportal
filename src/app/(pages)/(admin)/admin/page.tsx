@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import ComingSoon from "@/app/components/ComingSoon";
+import ComingSoon from "@/app/components/ui/ComingSoon";
 import { createArticle } from "@/app/services/articleService";
-import { sendNotification } from "../user-preferences/actions";
+import { sendNotification } from "@/app/lib/actions";
 
 type AdminTab = "ajouter" | "modifier" | "supprimer";
 

@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 import ArticleList from "@/app/components/Article/ArticleList";
-import Banner from "@/app/components/Banner";
+import Banner from "@/app/components/ui/Banner";
 
-export default function ActualitesPage() {
+export default function NewsPage() {
   return (
     <main className="min-h-screen">
       <Banner 

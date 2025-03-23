@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import Title from '@/app/components/Title'
+import Title from '@/app/components/ui/Title'
 import Image from 'next/image'
 import { getCardById } from '@/app/services/scryfallService'
 import { ScryfallCardDetail } from '@/app/types/scryfallTypes'

@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Header from "@/app/components/Header/header";
 import Footer from "@/app/components/Footer/footer";
 import { useEffect } from "react";
-import { registerServiceWorker } from "../registerServiceWorker";
+import { registerServiceWorker } from "@/app/lib/registerServiceWorker";
 
 export default function HeaderFooterWrapper({
   children,
@@ -15,7 +15,7 @@ export default function HeaderFooterWrapper({
     registerServiceWorker();
   }, []);
   const pathname = usePathname();
-  const hideLayout = pathname.startsWith("/outils/lifecounter");
+  const hideLayout = pathname.startsWith("/tools/lifecounter");
 
   return (
     <>

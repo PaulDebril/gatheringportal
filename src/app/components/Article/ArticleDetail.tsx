@@ -88,7 +88,7 @@ const ArticleDetail: React.FC<ArticleDetailProps> = ({ id }) => {
           </h1>
           <p className="mt-2 text-gray-300">Par {article.author}</p>
           <p className="mt-4 text-white">{article.description}</p>
-          <Link href="/actualites">
+          <Link href="/news">
             <span className="mt-4 inline-block text-blue-500 hover:underline cursor-pointer">
               Retour aux actualités
             </span>

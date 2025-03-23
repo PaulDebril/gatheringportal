@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Banner from "@/app/components/Banner";
+import Banner from "@/app/components/ui/Banner";
 import type { ToolWithLink } from "@/app/types/toolTypes";
 import ToolCard from "@/app/components/Tools/tools";
 
@@ -9,7 +9,7 @@ const tools: ToolWithLink[] = [
     id: 1,
     title: "Lifecounter",
     description: "Calculez rapidement vos points de vie et suivez vos compteurs en jeu.",
-    externalUrl: "/outils/lifecounter",
+    externalUrl: "/tools/lifecounter",
     imageUrl: "/images/tool-lifecounter.png"
   },
   {
@@ -50,7 +50,7 @@ const tools: ToolWithLink[] = [
 ];
 
 
-export default function OutilsPage() {
+export default function ToolsPage() {
   return (
     <main className="flex flex-col min-h-screen">
       <Banner

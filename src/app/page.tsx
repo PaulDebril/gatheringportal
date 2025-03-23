@@ -2,10 +2,9 @@
 
 import React, { useRef, useState, useEffect, useMemo } from "react";
 import ArticleList from "@/app/components/Article/ArticleList";
-import Title from "./components/Title";
-import HomeCards from "./components/HomeCards";
-import HomeBanner from "./components/HomeBanner";
-import styles from "./Home.module.css";
+import Title from "@/app/components/ui/Title";
+import HomeCards from "@/app/components/ui/HomeCards";
+import HomeBanner from "@/app/components/ui/HomeBanner";
 
 interface Section {
   name: string;
@@ -94,7 +93,7 @@ const Home: React.FC = () => {
 
   return (
     
-    <div className={styles.pageBackground}>
+    <div>
       <div className="relative">
         <ScrollIndicator
           sections={sections}

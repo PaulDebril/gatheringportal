@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { subscribeUser, unsubscribeUser, sendNotification } from "./actions";
+import { subscribeUser, unsubscribeUser, sendNotification } from "@/app/lib/actions";
 
 function urlBase64ToUint8Array(base64String: string) {
   const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
@@ -137,24 +137,6 @@ export default function PushNotificationsPreferences() {
             </button>
           </div>
         </div>
-      </div>
-      <div className="mb-8">
-        <h2 className="text-xl font-bold mb-4">
-          Tester l&apos;envoi d&apos;une notification
-        </h2>
-        <input
-          type="text"
-          placeholder="Titre ou message de l'article"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="w-full p-2 rounded bg-neutral-700 text-white mb-4"
-        />
-        <button
-          onClick={simulateNewArticle}
-          className="bg-[#d18700] text-white px-4 py-2 rounded"
-        >
-          Envoyer notification
-        </button>
       </div>
     </div>
   );

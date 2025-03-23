@@ -7,19 +7,19 @@ const HomeCards = () => {
   const cards = [
     {
       title: "ACTUALITÉS",
-      href: "/actualites",
+      href: "/news",
       image: "/images/hero-bg.jpg",
       description: "Retrouvez les dernières infos et annonces autour de Magic."
     },
     {
-      title: "GUIDE",
-      href: "/guide",
+      title: "GUIDES",
+      href: "/guides",
       image: "/images/hero-bg.jpg",
       description: "Découvrez des conseils et astuces pour bien débuter."
     },
     {
       title: "CARTES",
-      href: "/cartes",
+      href: "/cards",
       image: "/images/hero-bg.jpg",
       description: "Parcourez notre bibliothèque de cartes pour enrichir vos decks."
     },
@@ -31,7 +31,7 @@ const HomeCards = () => {
     },
     {
       title: "OUTILS",
-      href: "/outils",
+      href: "/tools",
       image: "/images/hero-bg.jpg",
       description: "Découvrez divers outils pour améliorer votre expérience Magic."
     },

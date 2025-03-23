@@ -1,12 +1,12 @@
-import Banner from '@/app/components/Banner'
-import ComingSoon from '@/app/components/ComingSoon'
+import Banner from '@/app/components/ui/Banner'
+import ComingSoon from '@/app/components/ui/ComingSoon'
 
-export default function GuidePage() {
+export default function GuidesPage() {
   return (
     <main className="flex flex-col">
       <Banner 
         image="/images/banner.png"
-        title="GUIDE"
+        title="GUIDES"
         description="Suivez les guides pour apprendre à jouer avec les cartes"
       />
       <ComingSoon />
