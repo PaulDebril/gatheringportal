@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GatheringPortal
 
-## Getting Started
+**GatheringPortal**, est une application développée avec [Next.js](https://nextjs.org/)
+Le projet utilise [Supabase](https://supabase.com/) comme **base de données**
 
-First, run the development server:
+Fait par Paul DEBRIL et Marine LANGREZ
+
+## Fonctionnalités principales
+
+**GatheringPortal** est un site web dédié aux fans du jeu de cartes **Magic: The Gathering**. Il propose plusieurs outils et ressources pour enrichir l’expérience des joueurs, notamment :
+
+- **Recherche de cartes** : Explorez la base de données des cartes Magic pour consulter les détails, visuels et caractéristiques.
+- **Outils** : Compteur de point de vie, outils externes etc.
+- **Actualités et mises à jour** : Dernières annonces de Wizards of the Coast, les nouvelles éditions et les événements compétitifs, articles sur le lore ...
+- **Contenu communautaire** : Guides pour tous les niveaux de joueurs.
+
+>L’objectif est de centraliser tout ce dont un joueur de Magic a besoin au même endroit, dans une interface simple et moderne.
+
+**Pour plus de détails sur les fonctionnalités, veuillez consulter le fichier [`README.features.md`](./README.features.md).**
+
+
+
+## Prérequis
+
+Avant de commencer l'installation, veuillez vous assurer d'avoir les éléments suivants installés sur votre machine :
+
+- [Node.js](https://nodejs.org/) (version recommandée : 18.x ou supérieure)
+- [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
+
+
+
+## Installation
+
+1. **Cloner le dépôt :**
+
+```bash
+git clone https://github.com/PaulDebril/gatheringportal.git
+cd gatheringportal
+```
+
+2. **Installer les dépendances :**
+
+Avec npm :
+```bash
+npm install
+```
+
+Ou avec yarn :
+```bash
+yarn install
+```
+
+3. **Configurer les variables d’environnement :**
+
+Créez un fichier `.env.local` à la racine du projet, puis ajoutez-y vos variables d’environnement (exemple) :
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=replace_me
+NEXT_PUBLIC_SUPABASE_ANON_KEY=replace_me
+NEXT_PUBLIC_VAPID_PUBLIC_KEY=replace_me
+VAPID_PRIVATE_KEY=replace_me
+```
+
+
+
+## Lancer l’environnement de développement
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ou :
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+L'application sera disponible à l'adresse : [http://localhost:3000](http://localhost:3000)
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Générer la version de production
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Ou :
 
-## Deploy on Vercel
+```bash
+yarn build
+yarn start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Licence
+Ce projet est privé. Tous les droits sont réservés.
+Vous n’êtes pas autorisé à copier, distribuer ou utiliser tout ou partie du code sans autorisation écrite préalable de l’auteur.
