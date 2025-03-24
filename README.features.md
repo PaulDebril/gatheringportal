@@ -109,15 +109,3 @@ Le site propose des outils, des actualités et une expérience enrichie pour acc
 
 ---
 
-## Fonctionnalités à venir (roadmap)
-
-Dans le **temps imparti pour le projet de cours "TypeScript & PWA"**, nous n’avons pas pu implémenter l’ensemble des fonctionnalités envisagées.  
-Voici toutefois un aperçu de ce que nous aimerions développer par la suite pour enrichir **GatheringPortal** :
-
-- Finalisation des pages **Guide**, **Collection** et **Decks**
-- Intégration d’un **moteur de recherche avancé** avec filtres multicritères pour les cartes
-- **Profils utilisateurs enrichis** : statistiques personnelles
-- Amélioration continue de la **performance, de l’ergonomie et de l’accessibilité mobile**
-- Nouveaux outils pour les joueurs
-
-> Ces évolutions visent à faire de GatheringPortal un véritable espace central pour les joueurs de Magic: The Gathering, à la fois pratique, communautaire et évolutif.
