@@ -10,42 +10,42 @@ const tools: ToolWithLink[] = [
     title: "Lifecounter",
     description: "Calculez rapidement vos points de vie et suivez vos compteurs en jeu.",
     externalUrl: "/tools/lifecounter",
-    imageUrl: "/images/tool-lifecounter.png"
+    imageUrl: "/images/Tool/tool-lifecounter.png"
   },
   {
     id: 2,
     title: "Jouer à distance",
     description: "Rejoignez vos amis et jouez à Magic en ligne via Spelltable.",
     externalUrl: "https://spelltable.wizards.com/",
-    imageUrl: "/images/tool-spelltable.png"
+    imageUrl: "/images/Tool/tool-spelltable.png"
   },
   {
     id: 3,
     title: "Card Market",
     description: "Achetez et vendez vos cartes Magic sur la plus grande plateforme européenne.",
     externalUrl: "https://www.cardmarket.com/fr",
-    imageUrl: "/images/tool-cardmarket.png"
+    imageUrl: "/images/Tool/tool-cardmarket.png"
   },
   {
     id: 4,
     title: "TCG Player",
     description: "Découvrez vos cartes et comparez les prix sur TCG Player.",
     externalUrl: "https://www.tcgplayer.com/",
-    imageUrl: "/images/tool-tcg-player.png"
+    imageUrl: "/images/Tool/tool-tcg-player.png"
   },
   {
     id: 5,
     title: "Mana Box",
     description: "Gérez votre collection et suivez vos ressources avec Mana Box.",
     externalUrl: "https://www.manabox.app/",
-    imageUrl: "/images/tool-mana-box.png"
+    imageUrl: "/images/Tool/tool-mana-box.png"
   },
   {
     id: 6,
     title: "Utapped.gg",
     description: "Analysez vos matchs et optimisez vos stratégies sur Utapped.gg.",
     externalUrl: "https://mtga.untapped.gg/",
-    imageUrl: "/images/tool-untapped-gg.png"
+    imageUrl: "/images/Tool/tool-untapped-gg.png"
   },
 ];
 
@@ -54,7 +54,7 @@ export default function ToolsPage() {
   return (
     <main className="flex flex-col min-h-screen">
       <Banner
-        image="/images/tool-banner.jpg"
+        image="/images/Banner/banner_tools.png"
         title="OUTILS"
         description="Découvrez les outils qui vous aideront à devenir un meilleur joueur de Magic: The Gathering."
       />

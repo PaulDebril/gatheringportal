@@ -22,7 +22,7 @@ export async function unsubscribeUser(sub: PushSubscription) {
 
 export async function sendNotification(message: string) {
   const payload = JSON.stringify({
-    title: 'Nouveau Article',
+    title: 'Nouvel Article',
     body: message,
     icon: 'images/icon-192x192.png',
   });

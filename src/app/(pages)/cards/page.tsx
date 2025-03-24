@@ -5,7 +5,7 @@ export default function CardPage() {
   return (
     <main className="flex flex-col min-h-screen">
        <Banner 
-        image="/images/banner.png"
+        image="/images/banner/banner_card.png"
         title="CARTES"
         description="Explorez les cartes de Magic: The Gathering"
       />

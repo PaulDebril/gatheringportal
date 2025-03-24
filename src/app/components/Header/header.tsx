@@ -147,7 +147,7 @@ const Header: React.FC = () => {
                     : "hover:text-white"
                 }`}
               >
-                <span className="relative z-10">Deck</span>
+                <span className="relative z-10">Decks</span>
                 <span
                   className="absolute -top-[2px] -left-[8px] -right-[8px] -bottom-[2px]
                              bg-[#d18700] transform skew-x-[-10deg] scale-x-[0.8] opacity-0
@@ -304,7 +304,7 @@ const Header: React.FC = () => {
                     }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <span className="relative z-10">Deck</span>
+                    <span className="relative z-10">Decks</span>
                     <span
                       className="absolute -top-[2px] -left-[8px] -right-[8px] -bottom-[2px]
                                  bg-[#d18700] transform skew-x-[-10deg] scale-x-[0.8] opacity-0

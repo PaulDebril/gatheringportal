@@ -5,7 +5,7 @@ export default function DecksPage() {
   return (
     <main className="flex flex-col">
       <Banner 
-        image="/images/banner.png"
+        image="/images/Banner/banner_decks.png"
         title="DECKS"
         description="Réalisez des decks pour jouer avec les cartes"
       />

@@ -5,7 +5,7 @@ export default function GuidesPage() {
   return (
     <main className="flex flex-col">
       <Banner 
-        image="/images/banner.png"
+        image="/images/Banner/banner_guides.png"
         title="GUIDES"
         description="Suivez les guides pour apprendre à jouer avec les cartes"
       />

@@ -5,7 +5,7 @@ export default function CollectionPage() {
   return (
     <main className="flex flex-col">
       <Banner 
-        image="/images/banner.png"
+        image="/images/Banner/banner_collection.png"
         title="COLLECTION"
         description="Retrouver ici votre collection de cartes Magic: The Gathering."
       />

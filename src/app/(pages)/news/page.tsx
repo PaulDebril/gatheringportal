@@ -7,7 +7,7 @@ export default function NewsPage() {
   return (
     <main className="min-h-screen">
       <Banner 
-        image="/images/banner.png"
+        image="/images/Banner/banner_news.jpg"
         title="ACTUALITÉS"
         description="Découvrez les dernières nouvelles et mises à jour"
       />

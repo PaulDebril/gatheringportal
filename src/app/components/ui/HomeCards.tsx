@@ -14,37 +14,37 @@ const HomeCards = () => {
     {
       title: "GUIDES",
       href: "/guides",
-      image: "/images/hero-bg.jpg",
+      image: "/images/HomeCards/card_guides.png",      
       description: "Découvrez des conseils et astuces pour bien débuter."
     },
     {
       title: "CARTES",
       href: "/cards",
-      image: "/images/hero-bg.jpg",
+      image: "/images/HomeCards/card_cards.png",      
       description: "Parcourez notre bibliothèque de cartes pour enrichir vos decks."
     },
     {
       title: "DECK BUILDER",
       href: "/decks",
-      image: "/images/hero-bg.jpg",
+      image: "/images/HomeCards/card_decks.png",      
       description: "Créez, organisez et optimisez vos decks en quelques clics."
     },
     {
       title: "OUTILS",
       href: "/tools",
-      image: "/images/hero-bg.jpg",
+      image: "/images/HomeCards/card_tools.png",      
       description: "Découvrez divers outils pour améliorer votre expérience Magic."
     },
     {
       title: "COLLECTION",
       href: "/collection",
-      image: "/images/hero-bg.jpg",
+      image: "/images/HomeCards/card_collection.png",
       description: "Explorez votre collection et suivez vos cartes favorites."
     },
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
+    <div className="max-w-6xl mx-auto px-4 py-2">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
         {cards.map((card, index) => (
           <Link

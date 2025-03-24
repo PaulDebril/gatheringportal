@@ -61,15 +61,15 @@ function CardSearchContent() {
     <div className="card-search">
       <form onSubmit={handleSearch} className="flex items-center space-x-2">
         <div className="flex flex-col items-center mt-8 w-full">
-          <div className="flex space-x-2 mt-4">
+          <div className="flex space-x-3 mt-3">
             <input
               type="text"
               placeholder="Rechercher une carte..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="border-2 border-gray-300 bg-gray-100 text-black rounded-lg p-3 w-96"
+              className="border-2 border-gray-300 bg-gray-100 text-black rounded-lg p-2 lg:w-full"
             />
-            <button type="submit" className="bg-[#c49a0d] text-white rounded-lg px-6">
+            <button type="submit" className="bg-[#d18700] text-white rounded-lg px-6">
               <FaSearch />
             </button>
           </div>
